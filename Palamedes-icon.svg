@@ -6,6 +6,7 @@
     .ring { fill:none; stroke:#BC8A45; stroke-width:6; }
   </style>
   <circle class="ring" cx="120" cy="120" r="112"/>
+  <g transform="translate(120,120) scale(0.9558) translate(-120,-120)">
   <g transform="translate(120,120) scale(0.4869) translate(-235,-256.5)">
     <g class="navy" transform="translate(0,500) scale(0.1,-0.1)">
       <path d="M2225 4523 c-139 -19 -331 -95 -463 -185 -56 -38 -107 -63 -169 -83
@@ -87,5 +88,6 @@
       <path class="gold" d="M 271.9,116.1 Q 303.6,131.5 333.8,113.5 Q 302.1,98.0 271.9,116.1 Z"/>
       <path class="gold" d="M 273.0,115.5 Q 308.6,100.3 315.4,62.1 Q 279.8,77.3 273.0,115.5 Z"/>
       <path class="gold" d="M 315.1,96.0 Q 348.4,103.1 372.6,79.1 Q 339.3,72.0 315.1,96.0 Z"/>
+  </g>
   </g>
 </svg>
