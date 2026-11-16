@@ -14,17 +14,38 @@ them; product repositories copy what they need from here.
 | [`marks/<product>/mark.svg`](marks)                        | A mark on paper, transparent background                |
 | [`marks/<product>/mark-on-dark.svg`](marks)                | The same with a paper disc under it, for dark surfaces |
 | [`marks/<product>/mark-mono.svg`](marks)                   | The same in one color                                  |
+| [`marks/<product>/README.md`](marks)                       | The idea behind the mark and its history               |
+
+## The idea
+
+Each product is named after a figure or a word from the ancient Greek world, and its mark shows
+that figure or a scene from its story: something that stands for what the product does, in a
+picture older than software. The marks are drawn like figures on Greek coins and vases, in navy
+on paper with one bronze accent, and they share one ring.
+
+What the marks so far have taught:
+
+- **A figure or a scene carries a mark; a bare object does not.** A trumpet, a bowl, a scroll on
+  its own stayed a prop. The herald sounding the trumpet worked at once.
+- **A mark need not explain itself, but it must not point the wrong way.** Nobody reads
+  "translation" from the Palamedes head, and that is fine. A winged runner for a booking tool
+  reads as delivery, and that is not.
+- **Bronze marks the one thing the picture is about:** the laurel, the flame, the trumpet. Where
+  there is no such thing, it sits in a few small fittings.
+- **Not every mark is a head.** Heads, figures, and scenes alternate so that the marks can be
+  told apart at a glance.
 
 ## Members
 
-| Product   | Motif                                   | Why                                                                                |
-| --------- | --------------------------------------- | ---------------------------------------------------------------------------------- |
-| Palamedes | A laureled head                         | Palamedes, to whom the Greeks ascribed letters and numbers                         |
-| Tereon    | A signal tower with a flame, on a coast | The watchman's beacon in Aeschylus' "Agamemnon"; τηρέων, "the one who keeps watch" |
-| Stentaro  | A herald sounding a salpinx             | Stentor, the herald of the Iliad whose voice carries like fifty men's              |
-| Terminaro | Two people shaking hands                | The dexiosis of Attic reliefs: an appointment is an agreement between two people   |
+| Product                                | Motif                                   | Stands for                                 |
+| -------------------------------------- | --------------------------------------- | ------------------------------------------ |
+| [Palamedes](marks/palamedes/README.md) | A laureled head                         | The inventor of letters and numbers        |
+| [Tereon](marks/tereon/README.md)       | A signal tower with a flame, on a coast | The watchman who waits for a signal        |
+| [Stentaro](marks/stentaro/README.md)   | A herald sounding a salpinx             | The voice that carries what others say     |
+| [Terminaro](marks/terminaro/README.md) | Two people shaking hands                | An appointment as an agreement between two |
 
-Marks for Gramano and Curano are in preparation and will be added here.
+Each product's page records the idea behind its mark, what the colors mean, and what was tried
+and dropped. Marks for Gramano and Curano are in preparation and will be added here.
 
 ## Palette
 
@@ -63,8 +84,9 @@ rest: the ring width **W = 10**.
 
 - Navy `#0E2A4D` carries the mass. Paper `#FAF9F4` appears as lines cut out of it, never as
   an outline drawn around it.
-- Bronze marks the one element the motif is about, such as a laurel or a flame, and nothing
-  else inside the window.
+- Bronze marks the one element the motif is about, such as a laurel, a flame, or a trumpet. A
+  motif without such an element, like Terminaro's two figures, carries bronze in a few small
+  fittings instead (clasps, a ribbon, bracelets).
 - Flat shapes only: no gradients, shading, or texture.
 - Cut-out lines are at least 2.5 units wide, so they stay open at 32 pixels.
 - One main motif and at most one supporting plane such as ground or water.
