@@ -21,5 +21,3 @@ A young man's head in profile with a laurel wreath, cut at the neck like a bust 
   units wide and the bust ended freely inside it.
 - In November 2026 the head was moved onto the frame unchanged: ring width 10, an empty paper
   ring, the bust lowered so that it is cut on the window.
-- The Palamedes repository does not record why the name was chosen; the reading above is the
-  family's.
