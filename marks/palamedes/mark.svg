@@ -1,18 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg viewBox="0 0 560 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PALAMEDES">
-  <defs>
-    <style>
-      @font-face{ font-family:"Cinzel Hellenic"; src:url("CinzelHellenic-Regular.ttf") format("truetype"); }
-      .navy { fill:#0E2A4D; } .gold { fill:#BC8A45; } .gold-l { fill:#D9BA7C; }
-      .stem { fill:none; stroke:#BC8A45; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
-      .bubble { fill:#FFFFFF; stroke:#BC8A45; stroke-width:5; stroke-linejoin:round; }
-      .ring { fill:none; stroke:#BC8A45; stroke-width:6; }
-      .wordmark { font-family:"Cinzel Hellenic", serif; font-weight:400; }
-    </style>
-  </defs>
-  <g transform="translate(160.0,24)">
-    <circle class="ring" cx="120" cy="120" r="112"/>
-  <g transform="translate(120,120) scale(0.9558) translate(-120,-120)">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Palamedes">
+
+  <style>
+    .navy { fill:#0E2A4D; } .gold { fill:#BC8A45; }
+    .stem { fill:none; stroke:#BC8A45; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
+    .ring { fill:none; stroke:#BC8A45; stroke-width:10; }
+  </style>
+  <clipPath id="palamedes-window"><circle cx="120" cy="120" r="97"/></clipPath><g clip-path="url(#palamedes-window)"><g transform="translate(120 217) scale(1.0415) translate(-120 -217) translate(120 120) scale(0.90654) translate(-120 -120)">
+  <g transform="translate(120,135) scale(0.9558) translate(-120,-120)">
   <g transform="translate(120,120) scale(0.4869) translate(-235,-256.5)">
     <g class="navy" transform="translate(0,500) scale(0.1,-0.1)">
       <path d="M2225 4523 c-139 -19 -331 -95 -463 -185 -56 -38 -107 -63 -169 -83
@@ -58,8 +52,7 @@
 -25 65 0 17 11 47 25 67 14 20 25 42 25 47 0 6 -11 11 -25 11 -23 0 -25 4 -25
 40 0 110 -104 187 -196 146z"/>
     </g>
-    <!-- Haarsträhnen (Original-Kurven aus Palamedes Icon.svg) on-top -->
-    <g fill="#FFFFFF">
+    <g fill="#FAF9F4">
       <path d="M346.7,153.5 C 347.4,154.0 339.6,160.5 330.9,155.7 328.4,154.3 323.3,148.6 317.5,147.8 313.9,147.2 308.5,149.0 305.4,150.9 301.9,153.0 299.1,158.1 298.6,157.7 295.5,155.9 306.6,136.1 321.0,140.5 327.8,142.6 328.3,145.1 332.2,148.2 340.6,154.9 346.3,153.1 346.7,153.5 Z"/>
       <path d="M282.3,176.8 C 283.1,177.9 294.7,182.7 300.5,180.5 301.1,180.3 304.3,177.8 304.6,178.2 305.0,178.8 300.6,187.7 289.5,187.1 285.0,186.8 282.9,184.8 278.0,185.8 272.3,187.0 271.0,190.5 269.4,189.7 265.7,187.6 276.0,182.9 275.6,181.0 275.1,178.6 266.1,175.6 258.8,181.2 251.6,186.8 250.8,192.5 250.2,192.4 249.2,192.2 249.0,179.8 259.4,174.3 262.5,172.6 268.5,171.1 272.0,171.5 274.2,171.8 276.4,172.2 278.5,173.0 283.1,174.8 281.4,175.5 282.3,176.8 Z"/>
       <path d="M252.4,217.7 C 254.2,217.2 258.5,214.8 259.4,215.6 262.3,218.4 247.7,228.7 235.3,222.9 231.9,221.2 228.9,218.9 226.0,216.0 219.4,209.5 213.4,210.9 213.1,210.3 212.6,209.5 223.0,201.3 232.5,211.0 237.7,216.2 245.6,219.7 252.4,217.7 Z"/>
@@ -69,8 +62,7 @@
       <path d="M102.5,279.0 C 102.7,279.7 94.6,286.1 91.4,292.0 84.7,304.6 92.3,313.6 91.7,314.2 90.9,314.9 77.0,305.4 83.7,292.1 88.4,283.0 102.1,278.0 102.5,279.0 Z"/>
       <path d="M138.5,318.0 C 138.8,317.9 140.8,317.8 141.0,317.9 141.5,318.1 144.8,323.2 146.5,325.5 148.9,328.8 149.4,333.8 147.3,337.4 141.8,346.6 130.6,341.1 126.0,341.1 121.8,341.0 116.6,343.3 113.8,346.3 111.0,349.2 109.5,353.6 109.5,357.5 109.5,362.3 111.9,364.5 111.6,365.2 111.3,365.9 105.2,362.3 105.1,356.0 105.1,350.8 106.8,347.9 109.4,343.9 115.0,335.4 132.9,335.3 133.5,335.0 135.8,334.2 137.8,331.5 139.0,329.5 141.0,326.0 137.9,318.5 138.5,318.0 Z"/>
     </g>
-    <!-- Lorbeer -->
-    <g fill="#FFFFFF" stroke="#FFFFFF" stroke-linejoin="round" stroke-linecap="round">
+    <g fill="#FAF9F4" stroke="#FAF9F4" stroke-linejoin="round" stroke-linecap="round">
       <path d="M 81.0,264.0 L 86.3,258.3 L 91.6,252.6 L 96.9,247.1 L 102.3,241.6 L 107.7,236.1 L 113.1,230.8 L 118.6,225.5 L 124.1,220.3 L 129.7,215.2 L 135.3,210.1 L 140.9,205.2 L 146.6,200.3 L 152.3,195.4 L 158.1,190.7 L 163.9,186.0 L 169.7,181.4 L 175.5,176.9 L 181.4,172.5 L 187.4,168.1 L 193.4,163.8 L 199.4,159.6 L 205.4,155.4 L 211.5,151.4 L 217.6,147.4 L 223.8,143.4 L 230.0,139.6 L 236.2,135.8 L 242.5,132.1 L 248.8,128.5 L 255.1,125.0 L 261.5,121.5 L 267.9,118.1 L 274.4,114.8 L 280.9,111.6 L 287.4,108.4 L 294.0,105.3 L 300.6,102.3 L 307.2,99.3 L 313.9,96.5 L 320.6,93.7 " fill="none" stroke-width="9.2"/>
       <g stroke-width="7.0">
         <path d="M 100.3,243.5 Q 135.1,213.5 129.1,168.0 Q 94.3,198.0 100.3,243.5 Z"/>
@@ -96,9 +88,4 @@
       <path class="gold" d="M 315.1,96.0 Q 348.4,103.1 372.6,79.1 Q 339.3,72.0 315.1,96.0 Z"/>
   </g>
   </g>
-  </g>
-  <text class="wordmark navy" x="280.0" y="352" font-size="64" letter-spacing="7" text-anchor="middle">PALAMEDES</text>
-  <line x1="70" y1="388" x2="150" y2="388" stroke="#BC8A45" stroke-width="1.5"/>
-  <line x1="410" y1="388" x2="490" y2="388" stroke="#BC8A45" stroke-width="1.5"/>
-  <text id="subtitle" class="wordmark gold" x="280.0" y="393" font-size="12.5" letter-spacing="3" text-anchor="middle">TRANSLATION SOLUTION</text>
-</svg>
+</g></g><circle class="ring" cx="120" cy="120" r="112"/></svg>
