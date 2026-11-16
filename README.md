@@ -21,8 +21,9 @@ them; product repositories copy what they need from here.
 | --------- | --------------------------------------- | ---------------------------------------------------------------------------------- |
 | Palamedes | A laureled head                         | Palamedes, to whom the Greeks ascribed letters and numbers                         |
 | Tereon    | A signal tower with a flame, on a coast | The watchman's beacon in Aeschylus' "Agamemnon"; τηρέων, "the one who keeps watch" |
+| Stentaro  | A herald sounding a salpinx             | Stentor, the herald of the Iliad whose voice carries like fifty men's              |
 
-Marks for Terminaro, Stentaro, Gramano, and Curano are in preparation and will be added here.
+Marks for Terminaro, Gramano, and Curano are in preparation and will be added here.
 
 ## Palette
 
@@ -50,7 +51,8 @@ rest: the ring width **W = 10**.
 
 1. **Stand it on its base.** A bust, a ground, a coastline: the base runs past the window's
    lower edge and is cut on it, as a figure stands on the ground line of an ancient coin.
-2. **Size it from the base upward** until its highest point reaches the top limit.
+2. **Size it from the base upward** until its highest point reaches the top limit or its widest
+   free part reaches the side limit, whichever comes first.
 3. **Keep the rest free.** Head, flame, tower, or whatever the motif is about touches nothing
    and stays inside the side limit.
 4. **Cut or clear, never almost.** A part either runs past the window and is cut, or keeps
