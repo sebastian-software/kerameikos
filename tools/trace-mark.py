@@ -3,8 +3,8 @@
 usage: clean.py <image> <outdir> <Label> <factor> [dx=0] [dy=0]
   factor: size relative to the generated ring (1.0 = as generated)
 env:   CLEAN_EDIT=<python file>  run on the masks before smoothing (navy, accent, xx, yy, S)
-       CLEAN_SIGMA (default 1.1)  smoothing in source pixels
-       CLEAN_TOL   (default 1.2)  potrace curve tolerance in source pixels
+       CLEAN_SIGMA (default 1.5)  smoothing in source pixels
+       CLEAN_TOL   (default 1.6)  potrace curve tolerance in source pixels
 """
 import sys, re, os, subprocess, numpy as np
 from PIL import Image
@@ -12,7 +12,7 @@ from scipy import ndimage
 src, out, label, f = sys.argv[1], sys.argv[2], sys.argv[3], float(sys.argv[4])
 dx = float(sys.argv[5]) if len(sys.argv) > 5 else 0.0
 dy = float(sys.argv[6]) if len(sys.argv) > 6 else 0.0
-SIGMA = float(os.environ.get('CLEAN_SIGMA', 1.1)); TOL = float(os.environ.get('CLEAN_TOL', 1.2))
+SIGMA = float(os.environ.get('CLEAN_SIGMA', 1.5)); TOL = float(os.environ.get('CLEAN_TOL', 1.6))
 os.makedirs(out, exist_ok=True)
 S = 4
 im = Image.open(src).convert('RGB'); im = im.resize((im.width*S, im.height*S), Image.BICUBIC)
@@ -73,7 +73,7 @@ print(f'{label}: x{f}; top y={ty+k*ys.min():.1f}, bottom y={ty+k*ys.max():.1f}, 
 def trace(mask, name):
     p = f'{out}/_{name}.pbm'
     Image.fromarray(np.where(mask, 0, 255).astype('uint8')).convert('1').save(p)
-    svg = subprocess.run(['potrace', '-b', 'svg', '-a', '1.1', '-O', str(TOL*S), '-t', str(20*S*S), '-u', '1', '--flat', p, '-o', '-'],
+    svg = subprocess.run(['potrace', '-b', 'svg', '-a', os.environ.get('CLEAN_ALPHA', '1.3'), '-O', str(TOL*S), '-t', str(20*S*S), '-u', '1', '--flat', p, '-o', '-'],
                          capture_output=True, text=True, check=True).stdout
     os.remove(p)
     return re.findall(r'<path d="([^"]+)"', svg)
