@@ -22,8 +22,9 @@ them; product repositories copy what they need from here.
 | Palamedes | A laureled head                         | Palamedes, to whom the Greeks ascribed letters and numbers                         |
 | Tereon    | A signal tower with a flame, on a coast | The watchman's beacon in Aeschylus' "Agamemnon"; τηρέων, "the one who keeps watch" |
 | Stentaro  | A herald sounding a salpinx             | Stentor, the herald of the Iliad whose voice carries like fifty men's              |
+| Terminaro | Two people shaking hands                | The dexiosis of Attic reliefs: an appointment is an agreement between two people   |
 
-Marks for Terminaro, Gramano, and Curano are in preparation and will be added here.
+Marks for Gramano and Curano are in preparation and will be added here.
 
 ## Palette
 
@@ -85,4 +86,4 @@ the same weight at the same size.
   surface that is not paper-colored use `mark-on-dark.svg`.
 - Earlier assets for Agoros, Relanto, Stellara, and Terminaro predate the frame and were
   removed. Agoros continues as Vorort under its own identity; Relanto and Stellara are not
-  developed further; Terminaro gets a new mark. They remain in the git history.
+  developed further; Terminaro has a new mark. They remain in the git history.
