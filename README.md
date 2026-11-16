@@ -15,6 +15,7 @@ them; product repositories copy what they need from here.
 | [`marks/<product>/mark-on-dark.svg`](marks)                | The same with a paper disc under it, for dark surfaces |
 | [`marks/<product>/mark-mono.svg`](marks)                   | The same in one color                                  |
 | [`marks/<product>/README.md`](marks)                       | The idea behind the mark and its history               |
+| [`tools/trace-mark.py`](tools/trace-mark.py)               | Turns a drawn emblem into a clean mark in the frame    |
 
 ## The idea
 
@@ -37,15 +38,16 @@ What the marks so far have taught:
 
 ## Members
 
-| Product                                | Motif                                   | Stands for                                 |
-| -------------------------------------- | --------------------------------------- | ------------------------------------------ |
-| [Palamedes](marks/palamedes/README.md) | A laureled head                         | The inventor of letters and numbers        |
-| [Tereon](marks/tereon/README.md)       | A signal tower with a flame, on a coast | The watchman who waits for a signal        |
-| [Stentaro](marks/stentaro/README.md)   | A herald sounding a salpinx             | The voice that carries what others say     |
-| [Terminaro](marks/terminaro/README.md) | Two people shaking hands                | An appointment as an agreement between two |
+| Product                                | Motif                                   | Stands for                                      |
+| -------------------------------------- | --------------------------------------- | ----------------------------------------------- |
+| [Palamedes](marks/palamedes/README.md) | A laureled head                         | The inventor of letters and numbers             |
+| [Tereon](marks/tereon/README.md)       | A signal tower with a flame, on a coast | The watchman who waits for a signal             |
+| [Stentaro](marks/stentaro/README.md)   | A herald sounding a salpinx             | The voice that carries what others say          |
+| [Terminaro](marks/terminaro/README.md) | Two people shaking hands                | An appointment as an agreement between two      |
+| [Gramano](marks/gramano/README.md)     | Clio reading a scroll                   | The keeper of records who reads what is written |
 
 Each product's page records the idea behind its mark, what the colors mean, and what was tried
-and dropped. Marks for Gramano and Curano are in preparation and will be added here.
+and dropped. The mark for Curano is in preparation and will be added here.
 
 ## Palette
 
@@ -96,6 +98,26 @@ rest: the ring width **W = 10**.
 - **On paper:** as drawn.
 - **On dark:** a paper disc of radius 117 lies under the mark; the motif is not inverted.
 - **One color:** ring and motif in the same color; the paper ring keeps them apart.
+
+## Making a mark from a drawing
+
+The marks after Palamedes start as a drawn emblem (a raster image with its own ring).
+[`tools/trace-mark.py`](tools/trace-mark.py) turns such an image into the three SVG versions:
+
+1. It separates navy, bronze, and paper, fits the drawn ring, and drops it.
+2. It smooths both shapes, removes specks and pinholes, and lets bronze run under the navy that
+   borders it, so no paper shows between the two.
+3. It traces the shapes with potrace into few, smooth curves and sets them into the frame,
+   scaled relative to the drawn ring.
+
+```sh
+python3 tools/trace-mark.py drawing.png marks/<product> <Name> 0.96
+```
+
+The last number is the size relative to the drawing; a fifth and sixth move the motif right and
+down in frame units. It needs Python with numpy, scipy, and Pillow, and the `potrace` and `npx`
+commands. The drawing a mark was traced from lies beside it as `drawing.webp`. A file given in `CLEAN_EDIT` can change the color areas before tracing; Gramano uses
+one.
 
 ## History
 
