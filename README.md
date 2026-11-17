@@ -38,16 +38,17 @@ What the marks so far have taught:
 
 ## Members
 
-| Product                                | Motif                                   | Stands for                                      |
-| -------------------------------------- | --------------------------------------- | ----------------------------------------------- |
-| [Palamedes](marks/palamedes/README.md) | A laureled head                         | The inventor of letters and numbers             |
-| [Tereon](marks/tereon/README.md)       | A signal tower with a flame, on a coast | The watchman who waits for a signal             |
-| [Stentaro](marks/stentaro/README.md)   | A herald sounding a salpinx             | The voice that carries what others say          |
-| [Terminaro](marks/terminaro/README.md) | Two people shaking hands                | An appointment as an agreement between two      |
-| [Gramano](marks/gramano/README.md)     | Clio reading a scroll                   | The keeper of records who reads what is written |
+| Product                                | Motif                                   | Stands for                                         |
+| -------------------------------------- | --------------------------------------- | -------------------------------------------------- |
+| [Palamedes](marks/palamedes/README.md) | A laureled head                         | The inventor of letters and numbers                |
+| [Tereon](marks/tereon/README.md)       | A signal tower with a flame, on a coast | The watchman who waits for a signal                |
+| [Stentaro](marks/stentaro/README.md)   | A herald sounding a salpinx             | The voice that carries what others say             |
+| [Terminaro](marks/terminaro/README.md) | Two people shaking hands                | An appointment as an agreement between two         |
+| [Gramano](marks/gramano/README.md)     | Clio reading a scroll                   | The keeper of records who reads what is written    |
+| [Curano](marks/curano/README.md)       | A wheelwright fitting a new spoke       | Replacing one part so that the whole keeps running |
 
 Each product's page records the idea behind its mark, what the colors mean, and what was tried
-and dropped. The mark for Curano is in preparation and will be added here.
+and dropped.
 
 ## Palette
 
