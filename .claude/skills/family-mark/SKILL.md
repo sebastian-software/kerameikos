@@ -88,6 +88,9 @@ reasons behind its parts:
 - **Figures in profile, as half-figures cut at the waist.** This is the coin convention the
   family follows. A frontal face was tried: its expression tips over at small sizes, and the
   result looked like a product label.
+- **Say little about hands.** Detailed instructions about which arm comes from where, thumbs,
+  and forearms made the hands worse in every run. "Holds the tablet in his left hand and writes
+  with his right" was enough. If one hand still goes wrong, hide it while tracing.
 - **Say that skin is paper-colored with navy contours.** Hair, garments, and objects are navy.
   It keeps hands and faces readable and sets the figure marks apart from the dark Palamedes
   head.
@@ -137,9 +140,12 @@ Then look at the picture, and ask:
   for.
 - **Is something happening?** A figure that only holds a thing is weaker than one doing
   something with it.
-- **Does it share a silhouette with another mark?** Compare at 32 pixels.
+- **Does it share a silhouette with another mark?** Compare them side by side.
 - **How large is the figure?** Two figures or a scene make each part small. Say so; it may be
   worth it.
+- **Which size matters?** The marks are used mostly large, on websites and in marketing, where
+  their details count. At favicon size the figure only has to remain recognizable; do not judge
+  or reject a mark by what disappears at 32 pixels.
 - **Where is the bronze, and is it the right thing?**
 - **Is it heavy or light beside the others?** A slim figure can be the lightest mark; a filled
   background the heaviest.

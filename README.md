@@ -32,26 +32,27 @@ What the marks so far have taught:
 - **A figure or a scene carries a mark; a bare object does not.** A trumpet, a bowl, a scroll on
   its own stayed a prop. The herald sounding the trumpet worked at once.
 - **A mark need not explain itself, but it must not point the wrong way.** Nobody reads
-  "translation" from the Palamedes head, and that is fine. A winged runner for a booking tool
-  reads as delivery, and that is not.
-- **Bronze marks the one thing the picture is about:** the laurel, the flame, the trumpet. Where
+  "translation" from a youth writing on a tablet, and that is fine. A winged runner for a booking
+  tool reads as delivery, and that is not.
+- **Bronze marks the one thing the picture is about:** the flame, the trumpet, the new spoke. Where
   there is no such thing, it sits in a few small fittings.
-- **A person doing something carries the family.** All marks but Palamedes show a figure in
-  action, and the figures differ in age, gender, hair, and headgear so that the marks can be
-  told apart at a glance.
+- **Marks are made for large uses.** Website, marketing, and documents show them large, and
+  their details count there. At favicon size the figure only has to remain recognizable.
+- **A person doing something carries the family.** All marks show a figure in action, and the
+  figures differ in age, gender, hair, and headgear so that the marks can be told apart at a glance.
 
 ## Members
 
-| Product                                | Motif                                         | Stands for                                         |
-| -------------------------------------- | --------------------------------------------- | -------------------------------------------------- |
-| [Palamedes](marks/palamedes/README.md) | A laureled head                               | The inventor of letters and numbers                |
-| [Tereon](marks/tereon/README.md)       | A watchman on a roof who sees a beacon fire   | The one who keeps watch for a signal               |
-| [Stentaro](marks/stentaro/README.md)   | A herald sounding a salpinx                   | The voice that carries what others say             |
-| [Terminaro](marks/terminaro/README.md) | Two people shaking hands                      | An appointment as an agreement between two         |
-| [Gramano](marks/gramano/README.md)     | Clio reading a scroll                         | The keeper of records who reads what is written    |
-| [Curano](marks/curano/README.md)       | A wheelwright fitting a new spoke             | Replacing one part so that the whole keeps running |
-| [Agoros](marks/agoros/README.md)       | A woman at her market stall, with a shop sign | The place where customers find a small business    |
-| [Naos](marks/naos/README.md)           | A master builder setting a block into a wall  | Uniform building blocks that fit together          |
+| Product                                | Motif                                              | Stands for                                         |
+| -------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| [Palamedes](marks/palamedes/README.md) | A youth writing the first letters, watching cranes | The inventor of letters                            |
+| [Tereon](marks/tereon/README.md)       | A watchman on a roof who sees a beacon fire        | The one who keeps watch for a signal               |
+| [Stentaro](marks/stentaro/README.md)   | A herald sounding a salpinx                        | The voice that carries what others say             |
+| [Terminaro](marks/terminaro/README.md) | Two people shaking hands                           | An appointment as an agreement between two         |
+| [Gramano](marks/gramano/README.md)     | Clio reading a scroll                              | The keeper of records who reads what is written    |
+| [Curano](marks/curano/README.md)       | A wheelwright fitting a new spoke                  | Replacing one part so that the whole keeps running |
+| [Agoros](marks/agoros/README.md)       | A woman at her market stall, with a shop sign      | The place where customers find a small business    |
+| [Naos](marks/naos/README.md)           | A master builder setting a block into a wall       | Uniform building blocks that fit together          |
 
 Each product's page records the idea behind its mark, what the colors mean, and what was tried
 and dropped.
@@ -118,7 +119,7 @@ motif that reaches the side limit first ends lower; Stentaro does, at y = 48.
 
 ## Making a mark from a drawing
 
-The marks after Palamedes start as a drawn emblem (a raster image with its own ring).
+The marks start as a drawn emblem (a raster image with its own ring).
 [`tools/trace-mark.py`](tools/trace-mark.py) turns such an image into the three SVG versions:
 
 1. It separates navy, bronze, and paper, fits the drawn ring, and drops it.
@@ -133,8 +134,8 @@ python3 tools/trace-mark.py drawing.png marks/<product> <Name> 0.96
 
 The last number is the size relative to the drawing; a fifth and sixth move the motif right and
 down in frame units. It needs Python with numpy, scipy, and Pillow, and the `potrace` and `npx`
-commands. The drawing a mark was traced from lies beside it as `drawing.webp`. A file given in `CLEAN_EDIT` can change the color areas before tracing; Gramano uses
-one.
+commands. The drawing a mark was traced from lies beside it as `drawing.webp`. A file given in
+`CLEAN_EDIT` can change the color areas before tracing; Gramano uses one.
 
 ## History
 
@@ -143,9 +144,8 @@ signal tower on a coast. With the
 motif standing on the window and its top 1.5 W below the window's edge, both marks carry about
 the same weight at the same size.
 
-- The Palamedes mark here is the earlier one, moved onto the frame: wider ring, paper ring, the
-  bust cut on the window. Its inner lines are painted in paper color, not cut out, so on a
-  surface that is not paper-colored use `mark-on-dark.svg`.
+- The first Palamedes mark, a laureled head, predates the frame. It was moved onto the frame
+  and later replaced by the writing youth, so that it follows the same grammar as the others.
 - Earlier assets for Agoros, Relanto, Stellara, and Terminaro predate the frame and were
   removed. Agoros, which runs as Vorort in the German market, has a new mark; Relanto and
   Stellara are not developed further; Terminaro has a new mark. They remain in the git history.
