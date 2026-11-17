@@ -51,5 +51,6 @@ by a light handshake, but less clearly than the marks with one motif.
 
 ## Placement
 
-Taken over as drawn, scaled to 96% and moved 4 units to the right, so that the man's cloak
-stays clear of the paper ring and the pair stands centered.
+Taken over as drawn, scaled to 96%, moved 4 units to the right and 2 units up: the man's cloak
+stays clear of the paper ring, the pair stands centered, and the top of his head sits at the
+frame's top limit (y = 38) like the other marks.

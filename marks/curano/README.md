@@ -50,7 +50,9 @@ Three decisions should survive any redrawing:
 
 ## Placement
 
-Taken over as drawn, scaled to 97% and moved 1 unit down. The drawing runs to its ring, so the
-window cuts body and wheel. The paper-colored forearm is cut as well and stays open toward the
-paper ring, like every part of a mark that runs out of the frame; a closing contour along the
-window was tried and looked wrong.
+Taken over as drawn, scaled to 97% and moved 4 units down, so that the top of the head sits at
+the frame's top limit (y = 38) like the other marks. The drawing already ends body and wheel a
+ring's width inside its own ring, so the frame's paper ring falls where the drawing left it.
+The paper-colored forearm is cut by the window and stays open toward the paper ring, like every
+part of a mark that runs out of the frame; a closing contour along the window was tried and
+looked wrong.

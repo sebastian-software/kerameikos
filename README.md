@@ -63,27 +63,35 @@ and dropped.
 Everything is measured on a 240-unit square with its center at 120/120. One number sets the
 rest: the ring width **W = 10**.
 
-| Part       | Measure                                 | Rule                                                      |
-| ---------- | --------------------------------------- | --------------------------------------------------------- |
-| Gold ring  | center line radius 112, width W         | bronze `#BC8A45`; drawn last, on top of everything        |
-| Paper ring | radius 97 to 107, width W               | stays empty; navy never touches gold                      |
-| Window     | radius 97                               | the motif lives inside it                                 |
-| Top limit  | y = 38, which is 1.5 W below the window | the motif's highest point                                 |
-| Side limit | radius 92, which is W/2 inside          | parts of the motif that are not its base stay inside this |
-| Base zone  | below y = 170                           | here the motif may run to the window's edge and is cut    |
+| Part       | Measure                                       | Rule                                                      |
+| ---------- | --------------------------------------------- | --------------------------------------------------------- |
+| Gold ring  | center line radius 112, width W               | bronze `#BC8A45`; drawn last, on top of everything        |
+| Paper ring | radius 97 to 107, width W                     | stays empty; navy never touches gold                      |
+| Window     | radius 97                                     | the motif lives inside it                                 |
+| Top limit  | about y = 38, which is 1.5 W below the window | where the motif's mass ends at the top; see below         |
+| Side limit | radius 92, which is W/2 inside                | parts of the motif that are not its base stay inside this |
+| Base zone  | below y = 170                                 | here the motif may run to the window's edge and is cut    |
 
 ## Placing a motif
 
 1. **Stand it on its base.** A bust, a ground, a coastline: the base runs past the window's
    lower edge and is cut on it, as a figure stands on the ground line of an ancient coin.
-2. **Size it from the base upward** until its highest point reaches the top limit or its widest
-   free part reaches the side limit, whichever comes first.
+2. **Size it from the base upward** until its mass reaches the top limit or its widest free
+   part reaches the side limit, whichever comes first.
 3. **Keep the rest free.** Head, flame, tower, or whatever the motif is about touches nothing
    and stays inside the side limit.
 4. **Cut or clear, never almost.** A part either runs past the window and is cut, or keeps
    its distance. A part that nearly touches the window's edge is moved or redrawn.
 5. **A cut stays open.** Where the window cuts a part, the part simply ends there, also when
    it is paper-colored like an arm. No contour is drawn along the window to close it.
+
+### The top limit is judged by eye
+
+The marks should end at the same height to the eye, not to the unit. What counts is where the
+mass of a motif ends: a head, a crown of hair, a broad shape. That edge sits at about y = 38 and
+does not rise above it as an area. A single narrow element, such as the tip of a flame, a curl,
+or a trumpet, may rise above the limit, as long as it stays clear of the window's edge. A wide
+motif that reaches the side limit first ends lower; Stentaro does, at y = 48.
 
 ## Drawing
 

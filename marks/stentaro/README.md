@@ -28,4 +28,6 @@ The lesson for the family: a bare object did not carry a mark; the figure using 
 
 ## Placement
 
-Taken over as drawn, scaled to 94% so that hair and trumpet stay clear of the paper ring.
+Taken over as drawn, scaled to 94% so that hair and trumpet stay clear of the paper ring. The
+motif is wide: hair on the left and the trumpet's bell on the right reach the side limit first,
+so its top stays at y = 48, below the top limit that the other marks reach.
