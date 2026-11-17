@@ -1,0 +1,136 @@
+# Greek family brand assets
+
+The shared identity of our products with ancient-Greek names: one typeface, one palette, and
+marks that share one frame, a motif in a bronze ring. This repository is the single source for
+them; product repositories copy what they need from here.
+
+## Contents
+
+| Path                                                       | What it is                                             |
+| ---------------------------------------------------------- | ------------------------------------------------------ |
+| [`CinzelHellenic-Regular.ttf`](CinzelHellenic-Regular.ttf) | The wordmark typeface                                  |
+| [`frame/ring-template.svg`](frame/ring-template.svg)       | The frame with its guides                              |
+| [`frame/ring-blank.svg`](frame/ring-blank.svg)             | The empty frame to draw a motif into                   |
+| [`marks/<product>/mark.svg`](marks)                        | A mark on paper, transparent background                |
+| [`marks/<product>/mark-on-dark.svg`](marks)                | The same with a paper disc under it, for dark surfaces |
+| [`marks/<product>/mark-mono.svg`](marks)                   | The same in one color                                  |
+| [`marks/<product>/README.md`](marks)                       | The idea behind the mark and its history               |
+| [`tools/trace-mark.py`](tools/trace-mark.py)               | Turns a drawn emblem into a clean mark in the frame    |
+
+## The idea
+
+Each product is named after a figure or a word from the ancient Greek world, and its mark shows
+that figure or a scene from its story: something that stands for what the product does, in a
+picture older than software. The marks are drawn like figures on Greek coins and vases, in navy
+on paper with one bronze accent, and they share one ring.
+
+What the marks so far have taught:
+
+- **A figure or a scene carries a mark; a bare object does not.** A trumpet, a bowl, a scroll on
+  its own stayed a prop. The herald sounding the trumpet worked at once.
+- **A mark need not explain itself, but it must not point the wrong way.** Nobody reads
+  "translation" from the Palamedes head, and that is fine. A winged runner for a booking tool
+  reads as delivery, and that is not.
+- **Bronze marks the one thing the picture is about:** the laurel, the flame, the trumpet. Where
+  there is no such thing, it sits in a few small fittings.
+- **Not every mark is a head.** Heads, figures, and scenes alternate so that the marks can be
+  told apart at a glance.
+
+## Members
+
+| Product                                | Motif                                   | Stands for                                         |
+| -------------------------------------- | --------------------------------------- | -------------------------------------------------- |
+| [Palamedes](marks/palamedes/README.md) | A laureled head                         | The inventor of letters and numbers                |
+| [Tereon](marks/tereon/README.md)       | A signal tower with a flame, on a coast | The watchman who waits for a signal                |
+| [Stentaro](marks/stentaro/README.md)   | A herald sounding a salpinx             | The voice that carries what others say             |
+| [Terminaro](marks/terminaro/README.md) | Two people shaking hands                | An appointment as an agreement between two         |
+| [Gramano](marks/gramano/README.md)     | Clio reading a scroll                   | The keeper of records who reads what is written    |
+| [Curano](marks/curano/README.md)       | A wheelwright fitting a new spoke       | Replacing one part so that the whole keeps running |
+
+Each product's page records the idea behind its mark, what the colors mean, and what was tried
+and dropped.
+
+## Palette
+
+| Name   | Value     | Use                                        |
+| ------ | --------- | ------------------------------------------ |
+| Navy   | `#0E2A4D` | The mass of every motif, text              |
+| Bronze | `#BC8A45` | The ring and the one accent inside a motif |
+| Paper  | `#FAF9F4` | The ground, and lines cut into the navy    |
+
+## The frame
+
+Everything is measured on a 240-unit square with its center at 120/120. One number sets the
+rest: the ring width **W = 10**.
+
+| Part       | Measure                                 | Rule                                                      |
+| ---------- | --------------------------------------- | --------------------------------------------------------- |
+| Gold ring  | center line radius 112, width W         | bronze `#BC8A45`; drawn last, on top of everything        |
+| Paper ring | radius 97 to 107, width W               | stays empty; navy never touches gold                      |
+| Window     | radius 97                               | the motif lives inside it                                 |
+| Top limit  | y = 38, which is 1.5 W below the window | the motif's highest point                                 |
+| Side limit | radius 92, which is W/2 inside          | parts of the motif that are not its base stay inside this |
+| Base zone  | below y = 170                           | here the motif may run to the window's edge and is cut    |
+
+## Placing a motif
+
+1. **Stand it on its base.** A bust, a ground, a coastline: the base runs past the window's
+   lower edge and is cut on it, as a figure stands on the ground line of an ancient coin.
+2. **Size it from the base upward** until its highest point reaches the top limit or its widest
+   free part reaches the side limit, whichever comes first.
+3. **Keep the rest free.** Head, flame, tower, or whatever the motif is about touches nothing
+   and stays inside the side limit.
+4. **Cut or clear, never almost.** A part either runs past the window and is cut, or keeps
+   its distance. A part that nearly touches the window's edge is moved or redrawn.
+5. **A cut stays open.** Where the window cuts a part, the part simply ends there, also when
+   it is paper-colored like an arm. No contour is drawn along the window to close it.
+
+## Drawing
+
+- Navy `#0E2A4D` carries the mass. Paper `#FAF9F4` appears as lines cut out of it, never as
+  an outline drawn around it.
+- Bronze marks the one element the motif is about, such as a laurel, a flame, or a trumpet. A
+  motif without such an element, like Terminaro's two figures, carries bronze in a few small
+  fittings instead (clasps, a ribbon, bracelets).
+- Flat shapes only: no gradients, shading, or texture.
+- Cut-out lines are at least 2.5 units wide, so they stay open at 32 pixels.
+- One main motif and at most one supporting plane such as ground or water.
+
+## Versions
+
+- **On paper:** as drawn.
+- **On dark:** a paper disc of radius 117 lies under the mark; the motif is not inverted.
+- **One color:** ring and motif in the same color; the paper ring keeps them apart.
+
+## Making a mark from a drawing
+
+The marks after Palamedes start as a drawn emblem (a raster image with its own ring).
+[`tools/trace-mark.py`](tools/trace-mark.py) turns such an image into the three SVG versions:
+
+1. It separates navy, bronze, and paper, fits the drawn ring, and drops it.
+2. It smooths both shapes, removes specks and pinholes, and lets bronze run under the navy that
+   borders it, so no paper shows between the two.
+3. It traces the shapes with potrace into few, smooth curves and sets them into the frame,
+   scaled relative to the drawn ring.
+
+```sh
+python3 tools/trace-mark.py drawing.png marks/<product> <Name> 0.96
+```
+
+The last number is the size relative to the drawing; a fifth and sixth move the motif right and
+down in frame units. It needs Python with numpy, scipy, and Pillow, and the `potrace` and `npx`
+commands. The drawing a mark was traced from lies beside it as `drawing.webp`. A file given in `CLEAN_EDIT` can change the color areas before tracing; Gramano uses
+one.
+
+## History
+
+The frame was worked out in November 2026 on the Palamedes head and the Tereon beacon. With the
+motif standing on the window and its top 1.5 W below the window's edge, both marks carry about
+the same weight at the same size.
+
+- The Palamedes mark here is the earlier one, moved onto the frame: wider ring, paper ring, the
+  bust cut on the window. Its inner lines are painted in paper color, not cut out, so on a
+  surface that is not paper-colored use `mark-on-dark.svg`.
+- Earlier assets for Agoros, Relanto, Stellara, and Terminaro predate the frame and were
+  removed. Agoros continues as Vorort under its own identity; Relanto and Stellara are not
+  developed further; Terminaro has a new mark. They remain in the git history.
