@@ -3,7 +3,7 @@ name: family-mark
 description: >-
   Design, redraw, or review a mark (logo emblem) for a product of the Greek
   product family: Palamedes, Tereon, Stentaro, Terminaro, Gramano, Curano,
-  Agoros, and any new member. Use whenever someone wants a logo, mark, icon,
+  Agoros, Naos, and any new member. Use whenever someone wants a logo, mark, icon,
   or emblem for one of these products or for a new product with a Greek or
   Latin name, asks for a motif or metaphor for such a mark, wants a prompt for
   an image model in the family's style, sends a generated emblem to be judged
@@ -70,8 +70,8 @@ have shown:
   an agreement between two people" was the metaphor.
 - **Check against the family before proposing.** Two marks must not share a silhouette. Keep
   heads, figures, and scenes mixed, and vary the figures in age, gender, and hair: the family
-  has a laureled youth, a curly-haired herald, a man with long tied hair, and women with a
-  knot and with open hair. A second craftsman with a tool needs a clearly different object and
+  has a laureled youth, a curly-haired herald, a man with long tied hair, a bearded elder, and
+  women with a knot and with open hair. A second craftsman with a tool needs a clearly different object and
   pose.
 - **When three correction rounds have not fixed a picture, the metaphor is wrong.** Say so and
   step back. Ask whether the owner dislikes the execution or the idea; they usually know.

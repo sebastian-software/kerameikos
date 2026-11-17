@@ -50,6 +50,7 @@ What the marks so far have taught:
 | [Gramano](marks/gramano/README.md)     | Clio reading a scroll                         | The keeper of records who reads what is written    |
 | [Curano](marks/curano/README.md)       | A wheelwright fitting a new spoke             | Replacing one part so that the whole keeps running |
 | [Agoros](marks/agoros/README.md)       | A woman at her market stall, with a shop sign | The place where customers find a small business    |
+| [Naos](marks/naos/README.md)           | A master builder setting a block into a wall  | Uniform building blocks that fit together          |
 
 Each product's page records the idea behind its mark, what the colors mean, and what was tried
 and dropped.
