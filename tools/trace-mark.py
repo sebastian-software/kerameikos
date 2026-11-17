@@ -102,7 +102,7 @@ def svg(navyc, bronzec, disc=False):
 BASE = 'mark-small' if SMALL else 'mark'
 for name, s in ((BASE, svg('#0E2A4D', '#BC8A45')), (BASE + '-on-dark', svg('#0E2A4D', '#BC8A45', True)), (BASE + '-mono', svg('#0E2A4D', '#0E2A4D'))):
     open(f'{out}/{name}.svg', 'w').write(s)
-subprocess.run(['npx', '--yes', 'svgo@4', '--multipass', '-p', '2', '-f', out], capture_output=True)
+subprocess.run(['npx', '--yes', 'svgo@4', '--multipass', '-p', '2', *[f'{out}/{n}.svg' for n in (BASE, BASE + '-on-dark', BASE + '-mono')]], capture_output=True)
 for name in (BASE, BASE + '-on-dark', BASE + '-mono'):
     p = f'{out}/{name}.svg'; s = open(p).read()
     s = s.replace('<svg xmlns="http://www.w3.org/2000/svg"', '<svg xmlns="http://www.w3.org/2000/svg" role="img"', 1) if 'role=' not in s else s
