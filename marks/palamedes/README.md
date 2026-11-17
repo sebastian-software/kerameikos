@@ -14,23 +14,24 @@ shows that moment: he looks up at the cranes and writes the first letters on a w
 
 ## The mark
 
-A young man in profile with a laurel wreath, looking up at three cranes flying in a loose V
-while he writes with a stylus on an open wooden tablet held against his body.
+A young man with a laurel wreath, his body turned slightly toward us, looking up at three cranes
+flying past at different distances. He holds an open wooden wax tablet with one hand from below
+and writes on it with a stylus in the other; the first letters stand on its two leaves, one of
+them crossed out.
 
 - **Navy:** his hair and cloak, the tablet's frame, and the stylus.
-- **Paper color:** face, neck, arm, and hand, and the wax of the tablet.
-- **Bronze:** the laurel, the cranes, and the marks on the wax: the honor, the cause, and the
+- **Paper color:** face, neck, arms, and hands, and the wax of the tablet.
+- **Bronze:** the laurel, the cranes, and the letters on the wax: the honor, the cause, and the
   letters.
 
 Three decisions should survive any redrawing:
 
-- **He writes, and the marks are visible on the tablet**, slanted, as one sees a notebook that
-  someone holds while writing. The letters are what the mark is about at large sizes; at small
-  sizes the figure, the tablet, and the cranes carry it.
-- **The cranes are a small detail at different distances,** not a main motif. As large birds
-  they turned the picture into bird-watching.
-- **The tablet is an ancient wax tablet,** not a dark rectangle with rounded corners, which reads
-  as a tablet computer.
+- **He writes, and the letters on the tablet can be read** at the sizes the mark is mostly used
+  at. They are what the mark is about.
+- **The cranes are real cranes,** with long necks and trailing legs, and a detail at different
+  distances, not a main motif. Short-necked birds read as ducks or doves.
+- **The tablet is an ancient wax tablet,** a diptych of two leaves, not a dark rectangle with
+  rounded corners, which reads as a tablet computer or a leather folder.
 
 ## What was tried and dropped
 
@@ -45,10 +46,12 @@ Three decisions should survive any redrawing:
   hands.
 - **A frontal torso holding a closed, dark book:** he no longer wrote, and the book read as a
   leather folder.
+- **A slim figure in strict profile with a small tablet:** the first version adopted here; its
+  supporting hand had no room for a forearm, and the figure looked light beside the others.
 
 ## Placement and tracing
 
-Taken over as drawn, scaled to 96% and moved 4 units down. The drawing showed a supporting hand
-poking out under the tablet with no room for its forearm; [`trace-edit.py`](trace-edit.py)
-removes it, which [`tools/trace-mark.py`](../../tools/trace-mark.py) applies while tracing
-(`CLEAN_EDIT`). The tablet now rests against his cloak, held by a hand hidden behind it.
+Taken over as drawn, scaled to 92%, moved 3 units left and 4 units down, so that the hand under
+the tablet and the cloak beside it stay inside the window. The head ends a little below the top
+limit, and the cranes rise above it as narrow elements. Traced with finer smoothing
+(`CLEAN_SIGMA=0.8 CLEAN_TOL=1.2`) so that the fingernails and finger lines survive.
