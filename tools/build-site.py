@@ -15,7 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "_site"
-REPO = "https://github.com/sebastian-software/grece-brand-assets"
+REPO = "https://github.com/sebastian-software/kerameikos"
 
 readme = (ROOT / "README.md").read_text()
 members = re.findall(
@@ -100,7 +100,7 @@ page = f"""<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Greek family brand assets</title>
+<title>Kerameikos</title>
 <meta name="description" content="Marks, small versions, lockups, palette, and typeface of the products with ancient-Greek names.">
 <link rel="icon" href="marks/palamedes/mark-small.svg">
 <style>
@@ -165,10 +165,11 @@ footer {{ padding: 2rem 0 3rem; color: var(--ink-3); font-size: 0.875rem; }}
 </head>
 <body>
 <div class="top"><div class="wrap">
-  <div class="eyebrow">Sebastian Software</div>
-  <h1>Greek family brand assets</h1>
-  <p class="lede">The marks of our products with ancient-Greek names, with their small versions and
-  lockups, the palette, and the typeface. Click any file to download it. The rules are in the
+  <div class="eyebrow">Sebastian Software · Brand assets</div>
+  <h1>Kerameikos</h1>
+  <p class="lede">The brand assets of our products with ancient-Greek names: marks, small versions,
+  lockups, palette, and typeface. The Kerameikos was the potters' quarter of Athens, where the
+  painted vases were made whose style the marks follow. Click any file to download it. The rules are in the
   <a href="{REPO}/blob/main/DESIGN.md">style guide</a> and the
   <a href="{REPO}/blob/main/README.md">frame rule</a>.</p>
   <div class="family">{''.join(f'<a href="#{slug}"><img src="marks/{slug}/mark.svg" alt="">{e(name)}</a>' for name, slug, _, _ in members)}</div>
@@ -201,7 +202,7 @@ footer {{ padding: 2rem 0 3rem; color: var(--ink-3); font-size: 0.875rem; }}
   </div>
 </div></div>
 
-<footer><div class="wrap">Generated from <a href="{REPO}">grece-brand-assets</a>.</div></footer>
+<footer><div class="wrap">Generated from <a href="{REPO}">sebastian-software/kerameikos</a>.</div></footer>
 </body>
 </html>
 """

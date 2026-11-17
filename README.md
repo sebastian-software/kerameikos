@@ -1,10 +1,23 @@
-# Greek family brand assets
+# Kerameikos
 
-The shared identity of our products with ancient-Greek names: one typeface, one palette, and
-marks that share one frame, a motif in a bronze ring. [`DESIGN.md`](DESIGN.md) is the style
-guide: lockups, typography, colors, layout, and voice. An overview page with every file to
-download is published to GitHub Pages from `main` by `.github/workflows/pages.yml`. This repository is the single source for
-them; product repositories copy what they need from here.
+The shared identity of Sebastian Software's products with ancient-Greek names: Palamedes,
+Tereon, Stentaro, Terminaro, Gramano, Curano, Agoros, and Naos. Each has a mark that shows a
+figure from the Greek world at work, drawn like the painting on a Greek vase, in navy and bronze
+on paper inside one shared ring. This repository is the single source for those marks, their
+small versions and lockups, the typeface, the palette, and the style guide; the products take
+what they need from here.
+
+The Kerameikos was the potters' quarter of ancient Athens, where the painted vases were made
+whose style these marks follow.
+
+- **Overview with downloads:** https://sebastian-software.github.io/kerameikos/, published from
+  `main` by `.github/workflows/pages.yml`.
+- **Style guide:** [`DESIGN.md`](DESIGN.md): lockups, typography, colors, layout, and voice.
+- **Making a new mark:** the skill in [`.claude/skills/family-mark/`](.claude/skills/family-mark/SKILL.md).
+
+The marks, lockups, style guide, and tools are the brand of Sebastian Software and are not
+licensed for use outside its products. The typeface Cinzel Hellenic is free software under the
+[SIL Open Font License](OFL.txt).
 
 ## Contents
 
