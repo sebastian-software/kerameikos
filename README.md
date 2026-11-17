@@ -2,7 +2,8 @@
 
 The shared identity of our products with ancient-Greek names: one typeface, one palette, and
 marks that share one frame, a motif in a bronze ring. [`DESIGN.md`](DESIGN.md) is the style
-guide: lockups, typography, colors, layout, and voice. This repository is the single source for
+guide: lockups, typography, colors, layout, and voice. An overview page with every file to
+download is published to GitHub Pages from `main` by `.github/workflows/pages.yml`. This repository is the single source for
 them; product repositories copy what they need from here.
 
 ## Contents
@@ -22,6 +23,7 @@ them; product repositories copy what they need from here.
 | [`tools/trace-mark.py`](tools/trace-mark.py)                                                         | Turns a drawn emblem into a clean mark in the frame                             |
 | [`tools/preview-marks.mjs`](tools/preview-marks.mjs)                                                 | Shows marks side by side, to judge a new one                                    |
 | [`tools/build-lockups.py`](tools/build-lockups.py)                                                   | Builds the lockups from the marks and the font                                  |
+| [`tools/build-site.py`](tools/build-site.py)                                                         | Builds the asset overview page that GitHub Pages publishes from `main`          |
 | [`tools/sheet.mjs`](tools/sheet.mjs), [`tools/split-sheet.py`](tools/split-sheet.py)                 | Put all marks on one sheet for an image model, and cut its answer apart         |
 | [`frame/style-reference.png`](frame/style-reference.png)                                             | Three finished marks, to attach to an image prompt                              |
 | [`frame/sheet.png`](frame/sheet.png)                                                                 | All marks on one sheet, to send to an image model; rebuilt by `tools/sheet.mjs` |
@@ -165,6 +167,5 @@ the same weight at the same size.
 
 - The first Palamedes mark, a laureled head, predates the frame. It was moved onto the frame
   and later replaced by the writing youth, so that it follows the same grammar as the others.
-- Earlier assets for Agoros, Relanto, Stellara, and Terminaro predate the frame and were
-  removed. Agoros, which runs as Vorort in the German market, has a new mark; Relanto and
-  Stellara are not developed further; Terminaro has a new mark. They remain in the git history.
+- Earlier assets for Agoros and Terminaro predate the frame and were replaced by new marks.
+  Agoros runs as Vorort in the German market. The earlier files remain in the git history.
