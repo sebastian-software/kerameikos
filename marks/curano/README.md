@@ -48,8 +48,9 @@ Three decisions should survive any redrawing:
 - **Bronze fittings at the ends of the spokes:** they sat on two of three spokes and took
   attention from the one new part.
 
-## Placement and tracing
+## Placement
 
 Taken over as drawn, scaled to 97% and moved 1 unit down. The drawing runs to its ring, so the
-window cuts body and wheel. Where it cuts the paper-colored forearm, a navy contour along the
-window closes the arm (`CLEAN_ARCS="111:152"` for [`tools/trace-mark.py`](../../tools/trace-mark.py)).
+window cuts body and wheel. The paper-colored forearm is cut as well and stays open toward the
+paper ring, like every part of a mark that runs out of the frame; a closing contour along the
+window was tried and looked wrong.

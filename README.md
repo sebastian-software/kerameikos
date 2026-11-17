@@ -82,6 +82,8 @@ rest: the ring width **W = 10**.
    and stays inside the side limit.
 4. **Cut or clear, never almost.** A part either runs past the window and is cut, or keeps
    its distance. A part that nearly touches the window's edge is moved or redrawn.
+5. **A cut stays open.** Where the window cuts a part, the part simply ends there, also when
+   it is paper-colored like an arm. No contour is drawn along the window to close it.
 
 ## Drawing
 
@@ -117,8 +119,7 @@ python3 tools/trace-mark.py drawing.png marks/<product> <Name> 0.96
 
 The last number is the size relative to the drawing; a fifth and sixth move the motif right and
 down in frame units. It needs Python with numpy, scipy, and Pillow, and the `potrace` and `npx`
-commands. `CLEAN_ARCS` adds a contour along the window where it cuts a paper-colored part; Curano
-uses it. The drawing a mark was traced from lies beside it as `drawing.webp`. A file given in `CLEAN_EDIT` can change the color areas before tracing; Gramano uses
+commands. The drawing a mark was traced from lies beside it as `drawing.webp`. A file given in `CLEAN_EDIT` can change the color areas before tracing; Gramano uses
 one.
 
 ## History
