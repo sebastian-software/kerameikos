@@ -157,14 +157,6 @@ def package(name, slug):
         z.writestr(f"{slug}/README.txt", guide)
 
 
-def sizes(product):
-    full, small = f"marks/{product}/mark.svg", f"marks/{product}/mark-small.svg"
-    cells = []
-    for px in (192, 64, 48, 32):
-        src = full if px >= 192 or not (ROOT / small).exists() else small
-        cells.append(f'<span><img src="{src}" width="{px}" height="{px}" alt=""><em>{px}</em></span>')
-    return '<div class="sizes">' + "".join(cells) + "</div>"
-
 
 def description(slug):
     """The product line of a mark's page: what the product is, without notes about the mark."""
@@ -197,7 +189,6 @@ for name, slug, motif, stands in members:
   <div class="grid">{''.join(tile(slug, *f) for f in FILES)}</div>
   <div class="grid lockups">{''.join(tile(slug, *f, cls="tile wide") for f in LOCKUPS)}</div>
   {rasters(slug)}
-  {sizes(slug)}
 </section>"""
     )
 
@@ -243,7 +234,7 @@ nav {{ display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; margin-top: 1.5rem;
 .family img {{ width: 100%; display: block; margin-bottom: 0.4rem; }}
 .band {{ padding: 3rem 0; border-bottom: 1px solid var(--hair); }}
 .band.parchment {{ background: var(--parchment); }}
-.product {{ padding: 3rem 0; border-bottom: 1px solid var(--hair); }}
+.product {{ padding: 5rem 0; border-bottom: 1px solid var(--hair); }}
 .product header {{ display: flex; gap: 1.5rem; align-items: center; margin-bottom: 1.75rem; }}
 .product .lead {{ width: 6rem; height: 6rem; flex: none; }}
 .what {{ margin: 0.4rem 0 0; font-size: 1.0625rem; max-width: 46rem; }}
@@ -268,9 +259,6 @@ p code {{ font: 0.9em var(--mono); }}
 .tile.wide img {{ max-width: 100%; aspect-ratio: auto; height: 3.5rem; width: auto; }}
 .tile figcaption {{ font: 0.6875rem/1 var(--mono); letter-spacing: 0.14em; text-transform: uppercase; }}
 .tile.dark figcaption a {{ color: #d2a660; }}
-.sizes {{ display: flex; align-items: flex-end; gap: 1.5rem; margin-top: 1rem; flex-wrap: wrap; }}
-.sizes span {{ display: flex; flex-direction: column; align-items: center; gap: 0.35rem; }}
-.sizes em {{ font: normal 0.6875rem/1 var(--mono); color: var(--ink-3); }}
 .palette {{ list-style: none; padding: 0; margin: 0; display: grid;
   grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: 1rem; }}
 .palette li {{ display: grid; grid-template-columns: 3rem 1fr; column-gap: 0.75rem; align-items: center; }}
