@@ -234,7 +234,7 @@ nav {{ display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; margin-top: 1.5rem;
 .family img {{ width: 100%; display: block; margin-bottom: 0.4rem; }}
 .band {{ padding: 3rem 0; border-bottom: 1px solid var(--hair); }}
 .band.parchment {{ background: var(--parchment); }}
-.product {{ padding: 5rem 0; border-bottom: 1px solid var(--hair); }}
+.product {{ padding: 5rem 0; }}
 .product header {{ display: flex; gap: 1.5rem; align-items: center; margin-bottom: 1.75rem; }}
 .product .lead {{ width: 6rem; height: 6rem; flex: none; }}
 .what {{ margin: 0.4rem 0 0; font-size: 1.0625rem; max-width: 46rem; }}
