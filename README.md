@@ -117,7 +117,8 @@ python3 tools/trace-mark.py drawing.png marks/<product> <Name> 0.96
 
 The last number is the size relative to the drawing; a fifth and sixth move the motif right and
 down in frame units. It needs Python with numpy, scipy, and Pillow, and the `potrace` and `npx`
-commands. The drawing a mark was traced from lies beside it as `drawing.webp`. A file given in `CLEAN_EDIT` can change the color areas before tracing; Gramano uses
+commands. `CLEAN_ARCS` adds a contour along the window where it cuts a paper-colored part; Curano
+uses it. The drawing a mark was traced from lies beside it as `drawing.webp`. A file given in `CLEAN_EDIT` can change the color areas before tracing; Gramano uses
 one.
 
 ## History

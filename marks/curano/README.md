@@ -15,18 +15,24 @@ wheel says the same thing with an object that is recognized at once.
 
 ## The mark
 
-A wheelwright as a half-figure in profile, steadying an ancient chariot wheel with one hand and
-fitting a new spoke into it with the other. The wheel has three spokes; where the fourth
-belongs there is a gap.
+A wheelwright as a half-figure in profile. One hand rests on the rim of a large ancient chariot
+wheel; the other holds a new spoke in front of it, pointed at the gap where a spoke is missing.
+The wheel is larger than the frame shows: the window cuts it on the right and at the bottom.
 
 - **Navy:** hair, garment, and the wheel.
 - **Paper color:** face, arms, and hands.
-- **Bronze:** the new spoke in his hand. The hub ring, the fittings at the ends of two spokes,
-  and his shoulder clasp are bronze as well, as metal parts.
+- **Bronze:** the new spoke in his hand, the ring around the hub, and his shoulder clasp.
 
-One decision should survive any redrawing: **the spoke is in his hand, not in the wheel, and
-the wheel shows the gap.** With the bronze spoke already in place he only held a finished
-wheel, and nobody could tell that he was doing anything.
+Three decisions should survive any redrawing:
+
+- **The spoke is in his hand, clearly apart from the wheel, and the wheel shows the gap.** With
+  the bronze spoke already in place he only held a finished wheel, and nobody could tell that
+  he was doing anything.
+- **The wheel is large and cut by the frame.** A wheel is understood from two thirds of it, and
+  a small complete wheel left the figure with cloth showing beneath it and little room for his
+  body.
+- **His body runs straight down to the cut.** In an earlier version the garment narrowed at the
+  waist and flared again, which made him look laced in.
 
 ## What was tried and dropped
 
@@ -39,8 +45,11 @@ wheel, and nobody could tell that he was doing anything.
   be seen.
 - **A wheelwright with curly hair:** the same scene, but a third curly-haired man beside
   Stentaro and Terminaro. The wavy hair tied back sets this figure apart.
+- **Bronze fittings at the ends of the spokes:** they sat on two of three spokes and took
+  attention from the one new part.
 
-## Placement
+## Placement and tracing
 
-Taken over as drawn, scaled to 95% so that the shoulder and the wheel stay clear of the paper
-ring.
+Taken over as drawn, scaled to 97% and moved 1 unit down. The drawing runs to its ring, so the
+window cuts body and wheel. Where it cuts the paper-colored forearm, a navy contour along the
+window closes the arm (`CLEAN_ARCS="111:152"` for [`tools/trace-mark.py`](../../tools/trace-mark.py)).

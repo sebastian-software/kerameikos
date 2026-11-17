@@ -5,6 +5,8 @@ usage: clean.py <image> <outdir> <Label> <factor> [dx=0] [dy=0]
 env:   CLEAN_EDIT=<python file>  run on the masks before smoothing (navy, accent, xx, yy, S)
        CLEAN_SIGMA (default 1.5)  smoothing in source pixels
        CLEAN_TOL   (default 1.6)  potrace curve tolerance in source pixels
+       CLEAN_ARCS=<from:to,...>   navy contour along the window between two angles (degrees, 0 = right,
+                                  90 = down), to close paper-colored parts that the window cuts
 """
 import sys, re, os, subprocess, numpy as np
 from PIL import Image
@@ -86,7 +88,11 @@ def svg(navyc, bronzec, disc=False):
     if disc: p.append('<circle cx="120" cy="120" r="117" fill="#FAF9F4"/>')
     p += [f'<clipPath id="{slug}-window"><circle cx="120" cy="120" r="97"/></clipPath>', f'<g clip-path="url(#{slug}-window)">']
     p += [f'<path fill="{bronzec}" fill-rule="evenodd" {T} d="{" ".join(ap)}"/>'] if ap else []
-    p += [f'<path fill="{navyc}" fill-rule="evenodd" {T} d="{" ".join(np_)}"/>', '</g>',
+    p += [f'<path fill="{navyc}" fill-rule="evenodd" {T} d="{" ".join(np_)}"/>']
+    for arc in filter(None, os.environ.get('CLEAN_ARCS', '').split(',')):
+        a0, a1 = (np.radians(float(v)) for v in arc.split(':')); R = 96.2
+        p.append(f'<path fill="none" stroke="{navyc}" stroke-width="1.6" stroke-linecap="round" d="M{120+R*np.cos(a0):.2f} {120+R*np.sin(a0):.2f}A{R} {R} 0 0 1 {120+R*np.cos(a1):.2f} {120+R*np.sin(a1):.2f}"/>')
+    p += ['</g>',
           f'<circle cx="120" cy="120" r="112" fill="none" stroke="{bronzec}" stroke-width="10"/>', '</svg>']
     return '\n'.join(p)
 for name, s in (('mark', svg('#0E2A4D', '#BC8A45')), ('mark-on-dark', svg('#0E2A4D', '#BC8A45', True)), ('mark-mono', svg('#0E2A4D', '#0E2A4D'))):
