@@ -5,6 +5,9 @@ usage: clean.py <image> <outdir> <Label> <factor> [dx=0] [dy=0]
 env:   CLEAN_EDIT=<python file>  run on the masks before smoothing (navy, accent, xx, yy, S)
        CLEAN_SIGMA (default 1.5)  smoothing in source pixels
        CLEAN_TOL   (default 1.6)  potrace curve tolerance in source pixels
+       CLEAN_SMALL=1              the small version: no paper ring, the motif fills the window up to
+                                  the gold ring (radius 107); scale it with the factor so that it does;
+                                  writes mark-small*.svg instead of mark*.svg
        CLEAN_ARCS=<from:to,...>   navy contour along the window between two angles (degrees, 0 = right,
                                   90 = down), to close paper-colored parts that the window cuts
 """
@@ -66,6 +69,7 @@ navy = smooth(navy, SIGMA); accent = smooth(accent, SIGMA)
 accent_draw = accent | (ndimage.binary_dilation(accent, iterations=4*S) & ndimage.binary_dilation(navy, iterations=1))
 
 # 4. placement in the frame
+SMALL = bool(os.environ.get('CLEAN_SMALL')); WIN = 107.0 if SMALL else 97.0
 k = 107.0/inner * f; tx = 120 + dx - k*cx; ty = 120 + dy - k*cy
 m = navy | accent; ys, xs = np.nonzero(m)
 free = m & (yy < cy + 0.3*inner)
@@ -86,7 +90,7 @@ slug = label.lower()
 def svg(navyc, bronzec, disc=False):
     p = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="{label}">']
     if disc: p.append('<circle cx="120" cy="120" r="117" fill="#FAF9F4"/>')
-    p += [f'<clipPath id="{slug}-window"><circle cx="120" cy="120" r="97"/></clipPath>', f'<g clip-path="url(#{slug}-window)">']
+    p += [f'<clipPath id="{slug}-window"><circle cx="120" cy="120" r="{WIN:g}"/></clipPath>', f'<g clip-path="url(#{slug}-window)">']
     p += [f'<path fill="{bronzec}" fill-rule="evenodd" {T} d="{" ".join(ap)}"/>'] if ap else []
     p += [f'<path fill="{navyc}" fill-rule="evenodd" {T} d="{" ".join(np_)}"/>']
     for arc in filter(None, os.environ.get('CLEAN_ARCS', '').split(',')):
@@ -95,12 +99,13 @@ def svg(navyc, bronzec, disc=False):
     p += ['</g>',
           f'<circle cx="120" cy="120" r="112" fill="none" stroke="{bronzec}" stroke-width="10"/>', '</svg>']
     return '\n'.join(p)
-for name, s in (('mark', svg('#0E2A4D', '#BC8A45')), ('mark-on-dark', svg('#0E2A4D', '#BC8A45', True)), ('mark-mono', svg('#0E2A4D', '#0E2A4D'))):
+BASE = 'mark-small' if SMALL else 'mark'
+for name, s in ((BASE, svg('#0E2A4D', '#BC8A45')), (BASE + '-on-dark', svg('#0E2A4D', '#BC8A45', True)), (BASE + '-mono', svg('#0E2A4D', '#0E2A4D'))):
     open(f'{out}/{name}.svg', 'w').write(s)
 subprocess.run(['npx', '--yes', 'svgo@4', '--multipass', '-p', '2', '-f', out], capture_output=True)
-for name in ('mark', 'mark-on-dark', 'mark-mono'):
+for name in (BASE, BASE + '-on-dark', BASE + '-mono'):
     p = f'{out}/{name}.svg'; s = open(p).read()
     s = s.replace('<svg xmlns="http://www.w3.org/2000/svg"', '<svg xmlns="http://www.w3.org/2000/svg" role="img"', 1) if 'role=' not in s else s
     s = re.sub(r'id="a"', f'id="{slug}-window"', s); s = s.replace('url(#a)', f'url(#{slug}-window)')
     open(p, 'w').write(s)
-print(f'{nodes} curve segments, {os.path.getsize(out+"/mark.svg")} bytes')
+print(f'{nodes} curve segments, {os.path.getsize(f"{out}/{BASE}.svg")} bytes')
