@@ -12,20 +12,37 @@ is also called a beacon.
 
 ## The mark
 
-A stone signal tower with a flame, standing on a coast above the sea.
+The watchman on the palace roof, leaning on its stone edge and shading his eyes with one hand
+as he looks across the sea at the beacon fire burning on a distant mountain.
 
-- **Navy:** tower and coast, with masonry joints and waves cut out in paper color.
-- **Bronze:** the flame, the signal itself.
+- **Navy:** his helmet and cloak, the roof edge, the sea, and the mountain.
+- **Paper color:** face, arms, and hands, and the waves and moulding lines.
+- **Bronze:** the beacon fire, the signal itself, and his shoulder clasp.
+
+Three decisions should survive any redrawing:
+
+- **The fire is large,** about as tall as his head, and the brightest thing in the picture. As
+  a small flame at the edge the story was lost.
+- **He wears a helmet, without a headband or curls.** With curly hair and a headband he was a
+  second Stentor.
+- **The roof edge runs across the whole width in front of the sea.** In the drawing it stopped
+  mid-picture and roof and sea merged into one dark area; `trace-edit.py` continues it.
 
 ## What was tried and dropped
 
 - **A Greek tau drawn as a surveyor's rod:** the first proposal; abstract and without a story.
-- **The watchman's head:** too close to the Palamedes head. Two marks that are both a man's
-  head would be hard to tell apart.
+- **The watchman's head alone:** too close to the Palamedes head.
 - **A chain of three beacons on three hills:** true to the story, but three small fires
   scatter; none of them carries the mark.
+- **A stone signal tower with a flame, on a coast:** the mark from November 2026 until the
+  family had grown. It read well at small sizes, but it was the only mark without a person in a
+  family of figures, and a single tower with bronze on top is a lighthouse. The watchman keeps
+  its sea, mountain, and fire.
+- **The watchman with curly hair, a headband, a beard, and a small fire:** the herald of
+  Stentaro once more, and the fire too small to carry the picture.
 
-## History
+## Placement and tracing
 
-Chosen in November 2026 from six generated concepts ("coastal beacon"). The frame rule of the
-family was worked out on this mark and the Palamedes head.
+Taken over as drawn, scaled to 97% and moved 1 unit down. The roof edge is continued to the
+right edge by [`trace-edit.py`](trace-edit.py), which
+[`tools/trace-mark.py`](../../tools/trace-mark.py) applies while tracing (`CLEAN_EDIT`).

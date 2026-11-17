@@ -36,7 +36,8 @@ What the marks so far have taught:
   reads as delivery, and that is not.
 - **Bronze marks the one thing the picture is about:** the laurel, the flame, the trumpet. Where
   there is no such thing, it sits in a few small fittings.
-- **Not every mark is a head.** Heads, figures, and scenes alternate so that the marks can be
+- **A person doing something carries the family.** All marks but Palamedes show a figure in
+  action, and the figures differ in age, gender, hair, and headgear so that the marks can be
   told apart at a glance.
 
 ## Members
@@ -44,7 +45,7 @@ What the marks so far have taught:
 | Product                                | Motif                                         | Stands for                                         |
 | -------------------------------------- | --------------------------------------------- | -------------------------------------------------- |
 | [Palamedes](marks/palamedes/README.md) | A laureled head                               | The inventor of letters and numbers                |
-| [Tereon](marks/tereon/README.md)       | A signal tower with a flame, on a coast       | The watchman who waits for a signal                |
+| [Tereon](marks/tereon/README.md)       | A watchman on a roof who sees a beacon fire   | The one who keeps watch for a signal               |
 | [Stentaro](marks/stentaro/README.md)   | A herald sounding a salpinx                   | The voice that carries what others say             |
 | [Terminaro](marks/terminaro/README.md) | Two people shaking hands                      | An appointment as an agreement between two         |
 | [Gramano](marks/gramano/README.md)     | Clio reading a scroll                         | The keeper of records who reads what is written    |
@@ -83,7 +84,7 @@ rest: the ring width **W = 10**.
    lower edge and is cut on it, as a figure stands on the ground line of an ancient coin.
 2. **Size it from the base upward** until its mass reaches the top limit or its widest free
    part reaches the side limit, whichever comes first.
-3. **Keep the rest free.** Head, flame, tower, or whatever the motif is about touches nothing
+3. **Keep the rest free.** Head, flame, hand, or whatever the motif is about touches nothing
    and stays inside the side limit.
 4. **Cut or clear, never almost.** A part either runs past the window and is cut, or keeps
    its distance. A part that nearly touches the window's edge is moved or redrawn.
@@ -137,7 +138,8 @@ one.
 
 ## History
 
-The frame was worked out in November 2026 on the Palamedes head and the Tereon beacon. With the
+The frame was worked out in November 2026 on the Palamedes head and the first Tereon mark, a
+signal tower on a coast. With the
 motif standing on the window and its top 1.5 W below the window's edge, both marks carry about
 the same weight at the same size.
 
@@ -145,5 +147,5 @@ the same weight at the same size.
   bust cut on the window. Its inner lines are painted in paper color, not cut out, so on a
   surface that is not paper-colored use `mark-on-dark.svg`.
 - Earlier assets for Agoros, Relanto, Stellara, and Terminaro predate the frame and were
-  removed. Agoros, which runs as Vorort in the German market, has a new mark; Relanto and Stellara are not
-  developed further; Terminaro has a new mark. They remain in the git history.
+  removed. Agoros, which runs as Vorort in the German market, has a new mark; Relanto and
+  Stellara are not developed further; Terminaro has a new mark. They remain in the git history.
