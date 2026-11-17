@@ -6,16 +6,19 @@ them; product repositories copy what they need from here.
 
 ## Contents
 
-| Path                                                       | What it is                                             |
-| ---------------------------------------------------------- | ------------------------------------------------------ |
-| [`CinzelHellenic-Regular.ttf`](CinzelHellenic-Regular.ttf) | The wordmark typeface                                  |
-| [`frame/ring-template.svg`](frame/ring-template.svg)       | The frame with its guides                              |
-| [`frame/ring-blank.svg`](frame/ring-blank.svg)             | The empty frame to draw a motif into                   |
-| [`marks/<product>/mark.svg`](marks)                        | A mark on paper, transparent background                |
-| [`marks/<product>/mark-on-dark.svg`](marks)                | The same with a paper disc under it, for dark surfaces |
-| [`marks/<product>/mark-mono.svg`](marks)                   | The same in one color                                  |
-| [`marks/<product>/README.md`](marks)                       | The idea behind the mark and its history               |
-| [`tools/trace-mark.py`](tools/trace-mark.py)               | Turns a drawn emblem into a clean mark in the frame    |
+| Path                                                                 | What it is                                             |
+| -------------------------------------------------------------------- | ------------------------------------------------------ |
+| [`CinzelHellenic-Regular.ttf`](CinzelHellenic-Regular.ttf)           | The wordmark typeface                                  |
+| [`frame/ring-template.svg`](frame/ring-template.svg)                 | The frame with its guides                              |
+| [`frame/ring-blank.svg`](frame/ring-blank.svg)                       | The empty frame to draw a motif into                   |
+| [`marks/<product>/mark.svg`](marks)                                  | A mark on paper, transparent background                |
+| [`marks/<product>/mark-on-dark.svg`](marks)                          | The same with a paper disc under it, for dark surfaces |
+| [`marks/<product>/mark-mono.svg`](marks)                             | The same in one color                                  |
+| [`marks/<product>/README.md`](marks)                                 | The idea behind the mark and its history               |
+| [`tools/trace-mark.py`](tools/trace-mark.py)                         | Turns a drawn emblem into a clean mark in the frame    |
+| [`tools/preview-marks.mjs`](tools/preview-marks.mjs)                 | Shows marks side by side, to judge a new one           |
+| [`frame/style-reference.png`](frame/style-reference.png)             | Three finished marks, to attach to an image prompt     |
+| [`.claude/skills/family-mark/`](.claude/skills/family-mark/SKILL.md) | How a new mark is found, prompted, judged, and placed  |
 
 ## The idea
 
