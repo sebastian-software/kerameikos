@@ -179,8 +179,12 @@ numpy, scipy, and Pillow, and the `potrace` and `npx` commands.
   `CLEAN_EDIT`; `marks/gramano/trace-edit.py` is the example.
 - **Two drawings of the same figure can be combined** when head and body are congruent, for
   instance the composition of one with the bronze details of the other.
-- **Look at the result enlarged.** The owner checks line ends and joins at high magnification.
-  If lines are rough, raise `CLEAN_SIGMA`; if fine hair lines close up, lower it.
+- **Look at the result enlarged, beside the drawing.** The owner checks line ends and joins at
+  high magnification. Compare fine details such as hands, fingernails, and faces with the same
+  crop of the drawing: the default smoothing can erase them. If lines are rough, raise
+  `CLEAN_SIGMA`; if fine lines vanish, lower it (Palamedes uses 0.8).
+- **Check what the window cuts.** A motif scaled up a few percent can lose a hand or the edge of
+  a garment at the window. Describe the traced mark, not the drawing you remember.
 
 ## Recording the mark
 
