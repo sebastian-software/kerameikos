@@ -52,6 +52,9 @@ def tile(product, file, label, bg, cls="tile"):
     path = f"marks/{product}/{file}"
     if not (ROOT / path).exists():
         return ""
+    # Small versions are shown at the size they are made for, so their purpose is visible.
+    if "small" in file:
+        cls += " small"
     return (
         f'<figure class="{cls} {bg}"><a href="{path}" download>'
         f'<img src="{path}" alt="{e(label)}" loading="lazy"></a>'
@@ -68,6 +71,19 @@ def sizes(product):
     return '<div class="sizes">' + "".join(cells) + "</div>"
 
 
+def description(slug):
+    """The product line of a mark's page: what the product is, without notes about the mark."""
+    text = (ROOT / "marks" / slug / "README.md").read_text()
+    m = re.search(r"\*\*Product:\*\*\s*(.+?)\n\n", text, re.S)
+    if not m:
+        return ""
+    line = " ".join(m.group(1).split())
+    sentences = [x for x in re.split(r"(?<=\.)\s+", line) if not re.search(r"\bmark\b", x, re.I)]
+    line = " ".join(sentences)
+    line = e(line[0].upper() + line[1:])
+    return re.sub(r"`([^`]+)`", r"<code>\1</code>", line)
+
+
 sections = []
 for name, slug, motif, stands in members:
     sections.append(
@@ -77,8 +93,8 @@ for name, slug, motif, stands in members:
     <img class="lead" src="marks/{slug}/mark.svg" alt="">
     <div>
       <h2>{e(name)}</h2>
-      <p class="motif">{e(motif)}</p>
-      <p class="stands">{e(stands)}</p>
+      <p class="what">{description(slug)}</p>
+      <p class="motif"><span class="label">Mark</span> {e(motif)}: {e(stands[0].lower() + stands[1:])}.</p>
       <p class="links"><a href="{REPO}/blob/main/marks/{slug}/README.md">Idea and history</a></p>
     </div>
   </header>
@@ -133,8 +149,11 @@ nav {{ display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; margin-top: 1.5rem;
 .product {{ padding: 3rem 0; border-bottom: 1px solid var(--hair); }}
 .product header {{ display: flex; gap: 1.5rem; align-items: center; margin-bottom: 1.75rem; }}
 .product .lead {{ width: 6rem; height: 6rem; flex: none; }}
-.motif {{ margin: 0.35rem 0 0; font-size: 1.0625rem; }}
-.stands {{ margin: 0.1rem 0 0; color: var(--ink-2); }}
+.what {{ margin: 0.4rem 0 0; font-size: 1.0625rem; max-width: 46rem; }}
+.what code {{ font: 0.9em var(--mono); }}
+.motif {{ margin: 0.45rem 0 0; color: var(--ink-2); max-width: 46rem; }}
+.label {{ font: 0.6875rem/1 var(--mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent);
+  margin-right: 0.35rem; }}
 .links {{ margin: 0.4rem 0 0; font-size: 0.875rem; }}
 .grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); gap: 1px;
   background: var(--hair); border: 1px solid var(--hair); }}
@@ -143,6 +162,8 @@ nav {{ display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; margin-top: 1.5rem;
 .tile.light {{ background: var(--paper); }}
 .tile.dark {{ background: var(--night); }}
 .tile img {{ width: 100%; max-width: 9rem; aspect-ratio: 1; display: block; }}
+.tile.small {{ justify-content: flex-end; }}
+.tile.small img {{ width: 4rem; height: 4rem; margin-block: auto; }}
 .tile.wide img {{ max-width: 100%; aspect-ratio: auto; height: 3.5rem; width: auto; }}
 .tile figcaption {{ font: 0.6875rem/1 var(--mono); letter-spacing: 0.14em; text-transform: uppercase; }}
 .tile.dark figcaption a {{ color: #d2a660; }}
