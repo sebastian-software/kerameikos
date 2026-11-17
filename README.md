@@ -13,6 +13,11 @@ whose style these marks follow.
 - **Overview with downloads:** https://sebastian-software.github.io/kerameikos/, published from
   `main` by `.github/workflows/pages.yml`.
 - **Style guide:** [`DESIGN.md`](DESIGN.md): lockups, typography, colors, layout, and voice.
+- **Brand package per product:** a zip with every file of the product (marks, lockups, favicon,
+  app icons, PNG files, and the typeface) on the overview page.
+- **Theme for websites:** `theme/theme.css` (custom properties, light and dark, the typeface,
+  the lockup as live text) and `theme/ardo.js` (the Ardo theme). The repository is an npm
+  package; see [Using the theme](#using-the-theme).
 - **Making a new mark:** the skill in [`.claude/skills/family-mark/`](.claude/skills/family-mark/SKILL.md).
 
 The marks, lockups, style guide, and tools are the brand of Sebastian Software and are not
@@ -32,15 +37,49 @@ licensed for use outside its products. The typeface Cinzel Hellenic is free soft
 | [`marks/<product>/mark-mono.svg`](marks)                                                             | The same in one color                                                           |
 | [`marks/<product>/mark-small.svg`](marks)                                                            | The small version, below 192 pixels; also `-on-dark` and `-mono`                |
 | [`marks/<product>/lockup.svg`](marks)                                                                | Mark and name, on light surfaces; `lockup-on-dark.svg` for dark                 |
+| [`marks/<product>/icons/`](marks)                                                                    | `favicon.ico`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`           |
+| [`marks/<product>/png/`](marks)                                                                      | The mark and lockups as PNG, for tools that do not take SVG                     |
 | [`marks/<product>/README.md`](marks)                                                                 | The idea behind the mark and its history                                        |
 | [`tools/trace-mark.py`](tools/trace-mark.py)                                                         | Turns a drawn emblem into a clean mark in the frame                             |
 | [`tools/preview-marks.mjs`](tools/preview-marks.mjs)                                                 | Shows marks side by side, to judge a new one                                    |
 | [`tools/build-lockups.py`](tools/build-lockups.py)                                                   | Builds the lockups from the marks and the font                                  |
-| [`tools/build-site.py`](tools/build-site.py)                                                         | Builds the asset overview page that GitHub Pages publishes from `main`          |
+| [`theme/`](theme)                                                                                    | `theme.css`, `ardo.js`, `tokens.json`, generated from `DESIGN.md`               |
+| [`tools/build-theme.py`](tools/build-theme.py)                                                       | Writes `theme/` from the tokens in `DESIGN.md`; `--check` runs in CI            |
+| [`tools/build-icons.mjs`](tools/build-icons.mjs)                                                     | Renders `icons/` and `png/` of every mark                                       |
+| [`tools/build-site.py`](tools/build-site.py)                                                         | Builds the overview page and the brand packages that GitHub Pages publishes     |
 | [`tools/sheet.mjs`](tools/sheet.mjs), [`tools/split-sheet.py`](tools/split-sheet.py)                 | Put all marks on one sheet for an image model, and cut its answer apart         |
 | [`frame/style-reference.png`](frame/style-reference.png)                                             | Three finished marks, to attach to an image prompt                              |
 | [`frame/sheet.png`](frame/sheet.png)                                                                 | All marks on one sheet, to send to an image model; rebuilt by `tools/sheet.mjs` |
 | [`.claude/skills/family-mark/`](.claude/skills/family-mark/SKILL.md)                                 | How a new mark is found, prompted, judged, and placed                           |
+
+## Using the theme
+
+The repository is the npm package `kerameikos`, installed from GitHub until it is published:
+
+```sh
+pnpm add github:sebastian-software/kerameikos
+```
+
+```ts
+import "kerameikos/theme.css"; // --kr-* colors, light and dark, Cinzel Hellenic, .kr-lockup
+import { KERAMEIKOS_ARDO_THEME } from "kerameikos/ardo"; // <ArdoRoot theme={KERAMEIKOS_ARDO_THEME}>
+import mark from "kerameikos/marks/tereon/mark-small.svg";
+```
+
+`theme.css` follows the system's dark mode unless the page sets `class="light"` or
+`data-theme="light"`, and `class="dark"` (as Ardo sets it) or `data-theme="dark"` forces dark.
+The lockup as live text:
+
+```html
+<a class="kr-lockup" href="/">
+  <img class="kr-lockup-mark" src="mark-small.svg" alt="" />
+  <span class="kr-lockup-name">Tereon</span>
+</a>
+```
+
+The colors live in the front matter of [`DESIGN.md`](DESIGN.md). After changing one, run
+`python3 tools/build-theme.py`; CI fails while `theme/` is out of date. After changing a mark,
+run `NODE_PATH=$(npm root -g) node tools/build-icons.mjs <product>` to render its icons again.
 
 ## The idea
 

@@ -1,0 +1,45 @@
+{
+  "name": "kerameikos",
+  "version": "0.1.0",
+  "description": "The Greek product family of Sebastian Software: marks, lockups, icons, typeface, CSS and Ardo theme",
+  "homepage": "https://sebastian-software.github.io/kerameikos/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sebastian-software/kerameikos.git"
+  },
+  "license": "SEE LICENSE IN README.md",
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "theme",
+    "marks/*/*.svg",
+    "marks/*/icons",
+    "marks/*/png",
+    "CinzelHellenic-Regular.woff2",
+    "CinzelHellenic-Regular.ttf",
+    "OFL.txt",
+    "DESIGN.md"
+  ],
+  "exports": {
+    "./theme.css": "./theme/theme.css",
+    "./tokens.json": "./theme/tokens.json",
+    "./ardo": {
+      "types": "./theme/ardo.d.ts",
+      "default": "./theme/ardo.js"
+    },
+    "./marks/*": "./marks/*",
+    "./fonts/CinzelHellenic-Regular.woff2": "./CinzelHellenic-Regular.woff2",
+    "./fonts/CinzelHellenic-Regular.ttf": "./CinzelHellenic-Regular.ttf",
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": {
+    "ardo": ">=6.6.0"
+  },
+  "peerDependenciesMeta": {
+    "ardo": {
+      "optional": true
+    }
+  }
+}

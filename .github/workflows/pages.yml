@@ -1,7 +1,8 @@
 name: Publish asset overview
 
-# Builds the asset overview page with tools/build-site.py and publishes it to GitHub Pages.
-# The page and the files it links to are generated; nothing in the repository is changed.
+# Checks that theme/ matches DESIGN.md, builds the asset overview page and the brand packages
+# with tools/build-site.py, and publishes them to GitHub Pages. Nothing in the repository is
+# changed.
 
 on:
   push:
@@ -30,6 +31,9 @@ jobs:
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
         with:
           enablement: true
+
+      - name: Check that the theme matches DESIGN.md
+        run: python3 tools/build-theme.py --check
 
       - name: Build the overview page
         run: python3 tools/build-site.py _site
