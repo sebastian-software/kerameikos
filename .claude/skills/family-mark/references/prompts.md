@@ -157,6 +157,28 @@ of bread, and a rolled bolt of cloth. No door, no wall, no awning. Accent:
 the signboard, her hair ribbon, and her shoulder clasp in bronze.
 ```
 
+### Naos, the version that held
+
+Reached through a temple portal, a column of drums, the builder with a temple model, and a
+mosaic. The first wall had the builder behind the wall and the block floating in front of it;
+the edit below fixed that by putting the block into the top course.
+
+```
+Motif: a Greek master builder setting a block onto a wall of dressed
+stone. A mature man as a half-figure in profile facing right, cut by the
+circle at the waist: wavy hair, a full, neatly trimmed beard, a calm and
+concentrated face, leaning slightly forward. He wears a cloak draped over
+one shoulder and fastened with a round clasp; both arms are bare. A low
+wall of large rectangular stone blocks, all exactly the same size, runs
+across the bottom of the medallion, laid in courses with staggered joints
+like Greek ashlar masonry; it is cut by the circle. With both hands he
+sets one more block into the top course: it is as long and as high as the
+other blocks, sits in line with that course directly beside the last
+block laid, and is held from both ends with open fingers. No white hole
+behind or beside the block. Accent: the block in his hands and his
+shoulder clasp in bronze. All other blocks are navy.
+```
+
 ### Naos, the master builder (not adopted)
 
 A good drawing on the first try, set aside because a finished temple stands for architecture
