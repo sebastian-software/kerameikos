@@ -167,6 +167,5 @@ the same weight at the same size.
 
 - The first Palamedes mark, a laureled head, predates the frame. It was moved onto the frame
   and later replaced by the writing youth, so that it follows the same grammar as the others.
-- Earlier assets for Agoros, Relanto, Stellara, and Terminaro predate the frame and were
-  removed. Agoros, which runs as Vorort in the German market, has a new mark; Relanto and
-  Stellara are not developed further; Terminaro has a new mark. They remain in the git history.
+- Earlier assets for Agoros and Terminaro predate the frame and were replaced by new marks.
+  Agoros runs as Vorort in the German market. The earlier files remain in the git history.
