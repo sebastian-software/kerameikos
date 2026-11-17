@@ -50,9 +50,9 @@ Three decisions should survive any redrawing:
 
 ## Placement
 
-Taken over as drawn at full size. The drawing already ends body and wheel a ring's width inside
-its own ring, so the frame's paper ring falls where the drawing left it. The head sits a little
-higher than in the other marks (its top at y = 31), which was preferred to a smaller figure.
+Taken over as drawn, scaled to 97% and moved 4 units down, so that the top of the head sits at
+the frame's top limit (y = 38) like the other marks. The drawing already ends body and wheel a
+ring's width inside its own ring, so the frame's paper ring falls where the drawing left it.
 The paper-colored forearm is cut by the window and stays open toward the paper ring, like every
 part of a mark that runs out of the frame; a closing contour along the window was tried and
 looked wrong.

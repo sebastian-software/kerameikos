@@ -30,7 +30,7 @@ both hands.
 
 ## Placement and tracing
 
-Taken over as drawn, scaled to 93% so that the head keeps the same distance from the ring as in
-the other marks. The two color changes against the generated drawing (sheet in paper color,
+Taken over as drawn, scaled to 93% and moved 3 units down, so that the top of the head sits at
+the frame's top limit (y = 38) like the other marks. The two color changes against the generated drawing (sheet in paper color,
 clasp as a bronze disc) are recorded in [`trace-edit.py`](trace-edit.py), which
 [`tools/trace-mark.py`](../../tools/trace-mark.py) applies while tracing.
