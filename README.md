@@ -38,14 +38,15 @@ What the marks so far have taught:
 
 ## Members
 
-| Product                                | Motif                                   | Stands for                                         |
-| -------------------------------------- | --------------------------------------- | -------------------------------------------------- |
-| [Palamedes](marks/palamedes/README.md) | A laureled head                         | The inventor of letters and numbers                |
-| [Tereon](marks/tereon/README.md)       | A signal tower with a flame, on a coast | The watchman who waits for a signal                |
-| [Stentaro](marks/stentaro/README.md)   | A herald sounding a salpinx             | The voice that carries what others say             |
-| [Terminaro](marks/terminaro/README.md) | Two people shaking hands                | An appointment as an agreement between two         |
-| [Gramano](marks/gramano/README.md)     | Clio reading a scroll                   | The keeper of records who reads what is written    |
-| [Curano](marks/curano/README.md)       | A wheelwright fitting a new spoke       | Replacing one part so that the whole keeps running |
+| Product                                | Motif                                         | Stands for                                         |
+| -------------------------------------- | --------------------------------------------- | -------------------------------------------------- |
+| [Palamedes](marks/palamedes/README.md) | A laureled head                               | The inventor of letters and numbers                |
+| [Tereon](marks/tereon/README.md)       | A signal tower with a flame, on a coast       | The watchman who waits for a signal                |
+| [Stentaro](marks/stentaro/README.md)   | A herald sounding a salpinx                   | The voice that carries what others say             |
+| [Terminaro](marks/terminaro/README.md) | Two people shaking hands                      | An appointment as an agreement between two         |
+| [Gramano](marks/gramano/README.md)     | Clio reading a scroll                         | The keeper of records who reads what is written    |
+| [Curano](marks/curano/README.md)       | A wheelwright fitting a new spoke             | Replacing one part so that the whole keeps running |
+| [Agoros](marks/agoros/README.md)       | A woman at her market stall, with a shop sign | The place where customers find a small business    |
 
 Each product's page records the idea behind its mark, what the colors mean, and what was tried
 and dropped.
@@ -140,5 +141,5 @@ the same weight at the same size.
   bust cut on the window. Its inner lines are painted in paper color, not cut out, so on a
   surface that is not paper-colored use `mark-on-dark.svg`.
 - Earlier assets for Agoros, Relanto, Stellara, and Terminaro predate the frame and were
-  removed. Agoros continues as Vorort under its own identity; Relanto and Stellara are not
+  removed. Agoros, which runs as Vorort in the German market, has a new mark; Relanto and Stellara are not
   developed further; Terminaro has a new mark. They remain in the git history.
