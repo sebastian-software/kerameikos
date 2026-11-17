@@ -212,7 +212,7 @@ its figure is a pictogram, not the brand. Let the image model redraw the mark wi
    ```
 
    Choose factor and offset so that the motif's mass ends at about y = 28 and nothing but the
-   base touches the gold ring. Keep the drawing as `drawing-small.webp`.
+   base touches the gold ring. Keep the drawing as `drawing-small.png`.
 
 4. **Judge at 32, 48, and 64 pixels** beside the full mark at 128, with
    `tools/preview-marks.mjs`: it must be the same figure, recognizable at a glance.
@@ -224,7 +224,7 @@ A mark is done when the repository holds:
 - `marks/<product>/mark.svg`, `mark-on-dark.svg`, `mark-mono.svg`, and `drawing.webp`, the
   drawing it was traced from;
 - the small version, `mark-small.svg` with its `-on-dark` and `-mono` files and
-  `drawing-small.webp`;
+  `drawing-small.png`;
 - the lockups, rebuilt with `python3 tools/build-lockups.py`;
 - `marks/<product>/README.md` with the product in one line, the idea, what navy, paper, and
   bronze are in this mark, the decisions that a redrawing must keep, what was tried and

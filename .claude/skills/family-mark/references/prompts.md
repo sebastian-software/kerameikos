@@ -256,6 +256,9 @@ new elements, no text, no labels.
 For one mark, attach it alone and replace the first two sentences with "Make a variant of the
 attached emblem for small sizes, 32 to 64 pixels."
 
+The sheet prompt produced all eight small versions in one run, alike in line weight and with
+the motif reaching the ring; each emblem came back at about 430 pixels, enough to trace.
+
 What to expect: the model redraws rather than simplifies, so faces and hands come back a little
 different. Lettering on objects disappears, which is right at these sizes. A supporting hand or
 other minor part may turn into a blob; at 64 pixels and below that does not show.
