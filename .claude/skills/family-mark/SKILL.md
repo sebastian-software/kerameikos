@@ -188,7 +188,7 @@ numpy, scipy, and Pillow, and the `potrace` and `npx` commands.
 
 ## The small version
 
-Every mark also needs a small version for sizes below 128 pixels (`mark-small.svg`). Do not
+Every mark also needs a small version for sizes below 192 pixels (`mark-small.svg`). Do not
 simplify it by algorithm and do not reduce it to the bronze object alone: closing lines
 automatically merges arm and cloak and erases joints that carry meaning, and an object without
 its figure is a pictogram, not the brand. Let the image model redraw the mark with less detail.
@@ -214,7 +214,7 @@ its figure is a pictogram, not the brand. Let the image model redraw the mark wi
    Choose factor and offset so that the motif's mass ends at about y = 28 and nothing but the
    base touches the gold ring. Keep the drawing as `drawing-small.png`.
 
-4. **Judge at 32, 48, and 64 pixels** beside the full mark at 128, with
+4. **Judge at 32, 48, and 64 pixels** beside the full mark at 192, with
    `tools/preview-marks.mjs`: it must be the same figure, recognizable at a glance.
 
 ## Recording the mark

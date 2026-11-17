@@ -122,12 +122,12 @@ history.
 | `mark.svg`           | On paper or any light surface, transparent background                           |
 | `mark-on-dark.svg`   | On dark surfaces, with a paper disc under the mark; the motif is never inverted |
 | `mark-mono.svg`      | Where only one color is possible: embossing, stamps, single-color print         |
-| `mark-small.svg`     | Below 128 pixels: favicons, app icons, avatars; also `-on-dark` and `-mono`     |
+| `mark-small.svg`     | Below 192 pixels: favicons, app icons, avatars; also `-on-dark` and `-mono`     |
 | `lockup.svg`         | Mark and name side by side, on light surfaces                                   |
 | `lockup-on-dark.svg` | Mark and name side by side, on dark surfaces                                    |
 
 - **Clear space:** at least half the mark's height on every side, free of text and edges.
-- **Which version at which size:** the full mark from 128 pixels up; below that the small
+- **Which version at which size:** the full mark from 192 pixels up; below that the small
   version, which keeps the figure and pose with less detail and without the paper ring inside
   the gold ring. The small version works down to 32 pixels; favicons at 16 pixels use it too.
 - **Minimum size:** 24 pixels for a mark alone, 20 pixels mark height in a lockup, except for

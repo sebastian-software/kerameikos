@@ -30,7 +30,7 @@ licensed for use outside its products. The typeface Cinzel Hellenic is free soft
 | [`marks/<product>/mark.svg`](marks)                                                                  | A mark on paper, transparent background                                         |
 | [`marks/<product>/mark-on-dark.svg`](marks)                                                          | The same with a paper disc under it, for dark surfaces                          |
 | [`marks/<product>/mark-mono.svg`](marks)                                                             | The same in one color                                                           |
-| [`marks/<product>/mark-small.svg`](marks)                                                            | The small version, below 128 pixels; also `-on-dark` and `-mono`                |
+| [`marks/<product>/mark-small.svg`](marks)                                                            | The small version, below 192 pixels; also `-on-dark` and `-mono`                |
 | [`marks/<product>/lockup.svg`](marks)                                                                | Mark and name, on light surfaces; `lockup-on-dark.svg` for dark                 |
 | [`marks/<product>/README.md`](marks)                                                                 | The idea behind the mark and its history                                        |
 | [`tools/trace-mark.py`](tools/trace-mark.py)                                                         | Turns a drawn emblem into a clean mark in the frame                             |
@@ -106,7 +106,7 @@ rest: the ring width **W = 10**.
 
 ### The small version
 
-Below 128 pixels a mark is shown in its small version, `mark-small.svg`: the same figure, pose,
+Below 192 pixels a mark is shown in its small version, `mark-small.svg`: the same figure, pose,
 and colors, redrawn with less detail. Hair is a few large shapes, garments lose their fold lines,
 outlines are bolder, and the bronze parts are a little larger. The frame changes in one point:
 **there is no paper ring.** The window reaches the gold ring (radius 107), and the motif fills it,

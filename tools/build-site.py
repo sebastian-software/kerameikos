@@ -65,8 +65,8 @@ def tile(product, file, label, bg, cls="tile"):
 def sizes(product):
     full, small = f"marks/{product}/mark.svg", f"marks/{product}/mark-small.svg"
     cells = []
-    for px in (128, 64, 48, 32):
-        src = full if px >= 128 or not (ROOT / small).exists() else small
+    for px in (192, 64, 48, 32):
+        src = full if px >= 192 or not (ROOT / small).exists() else small
         cells.append(f'<span><img src="{src}" width="{px}" height="{px}" alt=""><em>{px}</em></span>')
     return '<div class="sizes">' + "".join(cells) + "</div>"
 
@@ -131,7 +131,7 @@ page = f"""<!doctype html>
 body {{ margin: 0; background: var(--paper); color: var(--ink);
   font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }}
 a {{ color: var(--accent); }}
-.wrap {{ max-width: 72rem; margin: 0 auto; padding: 0 1.25rem; }}
+.wrap {{ max-width: 80rem; margin: 0 auto; padding: 0 1.25rem; }}
 .top {{ border-bottom: 1px solid var(--hair); padding: 3.5rem 0 2rem; }}
 .eyebrow {{ font: 0.6875rem/1 var(--mono); letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-3); }}
 h1, h2 {{ font-family: var(--display); font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; margin: 0; }}
@@ -155,13 +155,13 @@ nav {{ display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; margin-top: 1.5rem;
 .label {{ font: 0.6875rem/1 var(--mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent);
   margin-right: 0.35rem; }}
 .links {{ margin: 0.4rem 0 0; font-size: 0.875rem; }}
-.grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); gap: 1px;
+.grid {{ display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px;
   background: var(--hair); border: 1px solid var(--hair); }}
 .grid.lockups {{ grid-template-columns: repeat(2, 1fr); margin-top: 1rem; }}
 .tile {{ margin: 0; padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }}
 .tile.light {{ background: var(--paper); }}
 .tile.dark {{ background: var(--night); }}
-.tile img {{ width: 100%; max-width: 9rem; aspect-ratio: 1; display: block; }}
+.tile img {{ width: 100%; max-width: 12rem; aspect-ratio: 1; display: block; }}
 .tile.small {{ justify-content: flex-end; }}
 .tile.small img {{ width: 4rem; height: 4rem; margin-block: auto; }}
 .tile.wide img {{ max-width: 100%; aspect-ratio: auto; height: 3.5rem; width: auto; }}
@@ -181,7 +181,8 @@ nav {{ display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; margin-top: 1.5rem;
 .frame {{ display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }}
 .frame img {{ width: 12rem; height: 12rem; }}
 footer {{ padding: 2rem 0 3rem; color: var(--ink-3); font-size: 0.875rem; }}
-@media (max-width: 40rem) {{ .grid.lockups {{ grid-template-columns: 1fr; }} .tile.wide img {{ height: 2.75rem; }} .product header {{ align-items: flex-start; }} .product .lead {{ width: 4rem; height: 4rem; }} }}
+@media (max-width: 64rem) {{ .grid {{ grid-template-columns: repeat(3, 1fr); }} }}
+@media (max-width: 40rem) {{ .grid {{ grid-template-columns: repeat(2, 1fr); }} .grid.lockups {{ grid-template-columns: 1fr; }} .tile.wide img {{ height: 2.75rem; }} .product header {{ align-items: flex-start; }} .product .lead {{ width: 4rem; height: 4rem; }} }}
 </style>
 </head>
 <body>
