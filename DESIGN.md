@@ -142,14 +142,17 @@ regular weight. Cinzel Hellenic is Cinzel with a restrained Greek tint (an A wit
 among others); it ships here as `CinzelHellenic-Regular.ttf` and `.woff2` under the SIL Open
 Font License (`OFL.txt`).
 
-The lockup sets the mark to the left of the name:
+The lockup sets the mark to the left of the name. **The mark in a lockup is always the small
+version** (`mark-small.svg`): beside a name the mark is shown at header or button size, where
+the full mark's detail blurs.
 
 - The name's font size is 0.625 of the mark's height, so the capitals sit centered on the mark.
 - The gap between mark and name is 0.35 of the mark's height.
 - In a web header that is a 2 rem mark, a 1.25 rem name, and a 0.7 rem gap.
-- On dark surfaces the mark uses its paper disc and the name is set in paper color.
+- On dark surfaces the mark uses its paper disc (`mark-small-on-dark.svg`) and the name is set
+  in paper color.
 
-`tools/build-lockups.py` builds both lockups for every product from the mark and the font, with
+`tools/build-lockups.py` builds both lockups for every product from the small mark and the font, with
 the name converted to outlines. Use these files wherever the font cannot be loaded, such as in
 emails, slides, and documents; on websites, set the name as live text in the font so that it
 stays accessible.

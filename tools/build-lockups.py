@@ -2,7 +2,8 @@
 
 usage: python3 tools/build-lockups.py
 Writes marks/<product>/lockup.svg (on paper) and lockup-on-dark.svg for every product listed
-below. The name is converted to outlines, so the files need no font. Proportions follow the
+below, with the small version of the mark (mark-small.svg), which reads better at the size a
+lockup is shown at. The name is converted to outlines, so the files need no font. Proportions follow the
 Tereon and Palamedes headers: the name's font size is 0.625 of the mark's height, letters are
 spaced 0.16 em apart, and the gap between mark and name is 0.35 of the mark's height.
 """
@@ -50,8 +51,15 @@ for product in PRODUCTS:
     d, width = name_path(product.upper())
     total = MARK + GAP + width
     baseline = MARK / 2 + cap * scale / 2      # cap height centered on the mark
-    for variant, mark_file, ink in (("lockup", "mark.svg", NAVY), ("lockup-on-dark", "mark-on-dark.svg", PAPER)):
-        mark = (ROOT / "marks" / product.lower() / mark_file).read_text()
+    folder = ROOT / "marks" / product.lower()
+    # Beside the name the mark is small, so the lockup uses the small version where there is one.
+    small = (folder / "mark-small.svg").exists()
+    variants = (
+        ("lockup", "mark-small.svg" if small else "mark.svg", NAVY),
+        ("lockup-on-dark", "mark-small-on-dark.svg" if small else "mark-on-dark.svg", PAPER),
+    )
+    for variant, mark_file, ink in variants:
+        mark = (folder / mark_file).read_text()
         svg = (
             f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {total:.1f} {MARK}" role="img" '
             f'aria-label="{product}">'
