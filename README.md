@@ -1,24 +1,28 @@
 # Greek family brand assets
 
 The shared identity of our products with ancient-Greek names: one typeface, one palette, and
-marks that share one frame, a motif in a bronze ring. This repository is the single source for
+marks that share one frame, a motif in a bronze ring. [`DESIGN.md`](DESIGN.md) is the style
+guide: lockups, typography, colors, layout, and voice. This repository is the single source for
 them; product repositories copy what they need from here.
 
 ## Contents
 
-| Path                                                                 | What it is                                             |
-| -------------------------------------------------------------------- | ------------------------------------------------------ |
-| [`CinzelHellenic-Regular.ttf`](CinzelHellenic-Regular.ttf)           | The wordmark typeface                                  |
-| [`frame/ring-template.svg`](frame/ring-template.svg)                 | The frame with its guides                              |
-| [`frame/ring-blank.svg`](frame/ring-blank.svg)                       | The empty frame to draw a motif into                   |
-| [`marks/<product>/mark.svg`](marks)                                  | A mark on paper, transparent background                |
-| [`marks/<product>/mark-on-dark.svg`](marks)                          | The same with a paper disc under it, for dark surfaces |
-| [`marks/<product>/mark-mono.svg`](marks)                             | The same in one color                                  |
-| [`marks/<product>/README.md`](marks)                                 | The idea behind the mark and its history               |
-| [`tools/trace-mark.py`](tools/trace-mark.py)                         | Turns a drawn emblem into a clean mark in the frame    |
-| [`tools/preview-marks.mjs`](tools/preview-marks.mjs)                 | Shows marks side by side, to judge a new one           |
-| [`frame/style-reference.png`](frame/style-reference.png)             | Three finished marks, to attach to an image prompt     |
-| [`.claude/skills/family-mark/`](.claude/skills/family-mark/SKILL.md) | How a new mark is found, prompted, judged, and placed  |
+| Path                                                                                                 | What it is                                                      |
+| ---------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| [`DESIGN.md`](DESIGN.md)                                                                             | The style guide: lockups, type, colors, layout, voice           |
+| [`CinzelHellenic-Regular.ttf`](CinzelHellenic-Regular.ttf), [`.woff2`](CinzelHellenic-Regular.woff2) | The typeface for product names, under the [SIL OFL](OFL.txt)    |
+| [`frame/ring-template.svg`](frame/ring-template.svg)                                                 | The frame with its guides                                       |
+| [`frame/ring-blank.svg`](frame/ring-blank.svg)                                                       | The empty frame to draw a motif into                            |
+| [`marks/<product>/mark.svg`](marks)                                                                  | A mark on paper, transparent background                         |
+| [`marks/<product>/mark-on-dark.svg`](marks)                                                          | The same with a paper disc under it, for dark surfaces          |
+| [`marks/<product>/mark-mono.svg`](marks)                                                             | The same in one color                                           |
+| [`marks/<product>/lockup.svg`](marks)                                                                | Mark and name, on light surfaces; `lockup-on-dark.svg` for dark |
+| [`marks/<product>/README.md`](marks)                                                                 | The idea behind the mark and its history                        |
+| [`tools/trace-mark.py`](tools/trace-mark.py)                                                         | Turns a drawn emblem into a clean mark in the frame             |
+| [`tools/preview-marks.mjs`](tools/preview-marks.mjs)                                                 | Shows marks side by side, to judge a new one                    |
+| [`tools/build-lockups.py`](tools/build-lockups.py)                                                   | Builds the lockups from the marks and the font                  |
+| [`frame/style-reference.png`](frame/style-reference.png)                                             | Three finished marks, to attach to an image prompt              |
+| [`.claude/skills/family-mark/`](.claude/skills/family-mark/SKILL.md)                                 | How a new mark is found, prompted, judged, and placed           |
 
 ## The idea
 
@@ -59,11 +63,14 @@ and dropped.
 
 ## Palette
 
-| Name   | Value     | Use                                        |
-| ------ | --------- | ------------------------------------------ |
-| Navy   | `#0E2A4D` | The mass of every motif, text              |
-| Bronze | `#BC8A45` | The ring and the one accent inside a motif |
-| Paper  | `#FAF9F4` | The ground, and lines cut into the navy    |
+The marks use three colors. The full palette for pages, including the darker interface bronze
+for text and the dark variant, is in [`DESIGN.md`](DESIGN.md#colors).
+
+| Name   | Value     | Use in the marks                              |
+| ------ | --------- | --------------------------------------------- |
+| Navy   | `#0E2A4D` | The mass of every motif                       |
+| Bronze | `#BC8A45` | The ring and the accents inside a motif       |
+| Paper  | `#FAF9F4` | The ground, skin, and lines cut into the navy |
 
 ## The frame
 
