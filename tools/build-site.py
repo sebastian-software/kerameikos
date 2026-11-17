@@ -180,6 +180,10 @@ nav {{ display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; margin-top: 1.5rem;
 .files {{ display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }}
 .frame {{ display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }}
 .frame img {{ width: 12rem; height: 12rem; }}
+.usage {{ display: grid; grid-template-columns: 9rem 1fr; gap: 0.75rem 1.5rem; margin: 0; max-width: 56rem; }}
+.usage dt {{ font: 0.75rem/1.9 var(--mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }}
+.usage dd {{ margin: 0; color: var(--ink-2); }}
+@media (max-width: 40rem) {{ .usage {{ grid-template-columns: 1fr; gap: 0.2rem; }} .usage dd {{ margin-bottom: 0.75rem; }} }}
 footer {{ padding: 2rem 0 3rem; color: var(--ink-3); font-size: 0.875rem; }}
 @media (max-width: 64rem) {{ .grid {{ grid-template-columns: repeat(3, 1fr); }} }}
 @media (max-width: 40rem) {{ .grid {{ grid-template-columns: repeat(2, 1fr); }} .grid.lockups {{ grid-template-columns: 1fr; }} .tile.wide img {{ height: 2.75rem; }} .product header {{ align-items: flex-start; }} .product .lead {{ width: 4rem; height: 4rem; }} }}
@@ -195,6 +199,28 @@ footer {{ padding: 2rem 0 3rem; color: var(--ink-3); font-size: 0.875rem; }}
   <a href="{REPO}/blob/main/DESIGN.md">style guide</a> and the
   <a href="{REPO}/blob/main/README.md">frame rule</a>.</p>
   <div class="family">{''.join(f'<a href="#{slug}"><img src="marks/{slug}/mark.svg" alt="">{e(name)}</a>' for name, slug, _, _ in members)}</div>
+</div></div>
+
+<div class="band parchment"><div class="wrap">
+  <h3>Which file to use</h3>
+  <dl class="usage">
+    <dt>Mark</dt>
+    <dd>For 192 pixels and more, on paper or another light surface. Inside the ring the file is
+    transparent: sky, skin, and the paper ring are not drawn, the page shows through.</dd>
+    <dt>On dark</dt>
+    <dd>For dark surfaces. It looks the same as the mark but has a paper disc under it. Without
+    the disc the dark page would show through those transparent parts, and the navy figure
+    would vanish into it.</dd>
+    <dt>One color</dt>
+    <dd>Where only one color can be printed or embossed.</dd>
+    <dt>Small</dt>
+    <dd>Below 192 pixels: favicons, app icons, avatars. The same figure redrawn with less detail
+    and without the paper ring, so it stays readable at 32 to 64 pixels. Also on dark and in
+    one color.</dd>
+    <dt>Lockup</dt>
+    <dd>The small mark beside the name in Cinzel Hellenic, for headers, emails, and slides. On
+    websites set the name as live text instead and use the small mark beside it.</dd>
+  </dl>
 </div></div>
 
 <div class="wrap">{''.join(sections)}</div>
