@@ -6,6 +6,7 @@ for Codex Sol 6.1 High. Attach `frame/style-reference.png` to every new-image pr
 - [The template](#the-template)
 - [Motif paragraphs that worked](#motif-paragraphs-that-worked)
 - [Edit prompts](#edit-prompts)
+- [Small versions](#small-versions)
 - [What went wrong, and the wording that fixed it](#what-went-wrong-and-the-wording-that-fixed-it)
 
 ## The template
@@ -231,6 +232,33 @@ arrangement:
    about one and a half times as wide as now and runs on to the right
    until the circle cuts it.
 ```
+
+## Small versions
+
+The wording that produced a good small Palamedes from the full mark was short: "a variant for
+small resolutions, e.g. 32 px, with less detail that keeps the form". The sheet prompt below
+says the same for all marks at once and adds what made that result work.
+
+```
+The attached sheet shows eight emblems of one product family. Draw the same
+sheet again, in the same 4 x 2 arrangement and order, as small versions of
+these emblems for 32 to 64 pixels. Each emblem keeps its figure, pose,
+composition, objects, and colors, so that it is clearly the same mark.
+Reduce the detail in the same way for all eight: draw hair as a few large
+shapes, drop the fold lines in garments and the strands in hair, keep only
+the most important inner lines, and make the outlines of faces, hands, and
+objects bolder. Keep the bronze parts and make them a little larger rather
+than smaller. Leave out the empty cream ring inside the bronze ring: the
+motif reaches the bronze ring directly. Same bronze ring on all eight. No
+new elements, no text, no labels.
+```
+
+For one mark, attach it alone and replace the first two sentences with "Make a variant of the
+attached emblem for small sizes, 32 to 64 pixels."
+
+What to expect: the model redraws rather than simplifies, so faces and hands come back a little
+different. Lettering on objects disappears, which is right at these sizes. A supporting hand or
+other minor part may turn into a blob; at 64 pixels and below that does not show.
 
 ## What went wrong, and the wording that fixed it
 

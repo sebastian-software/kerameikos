@@ -7,22 +7,25 @@ them; product repositories copy what they need from here.
 
 ## Contents
 
-| Path                                                                                                 | What it is                                                      |
-| ---------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| [`DESIGN.md`](DESIGN.md)                                                                             | The style guide: lockups, type, colors, layout, voice           |
-| [`CinzelHellenic-Regular.ttf`](CinzelHellenic-Regular.ttf), [`.woff2`](CinzelHellenic-Regular.woff2) | The typeface for product names, under the [SIL OFL](OFL.txt)    |
-| [`frame/ring-template.svg`](frame/ring-template.svg)                                                 | The frame with its guides                                       |
-| [`frame/ring-blank.svg`](frame/ring-blank.svg)                                                       | The empty frame to draw a motif into                            |
-| [`marks/<product>/mark.svg`](marks)                                                                  | A mark on paper, transparent background                         |
-| [`marks/<product>/mark-on-dark.svg`](marks)                                                          | The same with a paper disc under it, for dark surfaces          |
-| [`marks/<product>/mark-mono.svg`](marks)                                                             | The same in one color                                           |
-| [`marks/<product>/lockup.svg`](marks)                                                                | Mark and name, on light surfaces; `lockup-on-dark.svg` for dark |
-| [`marks/<product>/README.md`](marks)                                                                 | The idea behind the mark and its history                        |
-| [`tools/trace-mark.py`](tools/trace-mark.py)                                                         | Turns a drawn emblem into a clean mark in the frame             |
-| [`tools/preview-marks.mjs`](tools/preview-marks.mjs)                                                 | Shows marks side by side, to judge a new one                    |
-| [`tools/build-lockups.py`](tools/build-lockups.py)                                                   | Builds the lockups from the marks and the font                  |
-| [`frame/style-reference.png`](frame/style-reference.png)                                             | Three finished marks, to attach to an image prompt              |
-| [`.claude/skills/family-mark/`](.claude/skills/family-mark/SKILL.md)                                 | How a new mark is found, prompted, judged, and placed           |
+| Path                                                                                                 | What it is                                                                      |
+| ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| [`DESIGN.md`](DESIGN.md)                                                                             | The style guide: lockups, type, colors, layout, voice                           |
+| [`CinzelHellenic-Regular.ttf`](CinzelHellenic-Regular.ttf), [`.woff2`](CinzelHellenic-Regular.woff2) | The typeface for product names, under the [SIL OFL](OFL.txt)                    |
+| [`frame/ring-template.svg`](frame/ring-template.svg)                                                 | The frame with its guides                                                       |
+| [`frame/ring-blank.svg`](frame/ring-blank.svg)                                                       | The empty frame to draw a motif into                                            |
+| [`marks/<product>/mark.svg`](marks)                                                                  | A mark on paper, transparent background                                         |
+| [`marks/<product>/mark-on-dark.svg`](marks)                                                          | The same with a paper disc under it, for dark surfaces                          |
+| [`marks/<product>/mark-mono.svg`](marks)                                                             | The same in one color                                                           |
+| [`marks/<product>/mark-small.svg`](marks)                                                            | The small version, below 128 pixels; also `-on-dark` and `-mono`                |
+| [`marks/<product>/lockup.svg`](marks)                                                                | Mark and name, on light surfaces; `lockup-on-dark.svg` for dark                 |
+| [`marks/<product>/README.md`](marks)                                                                 | The idea behind the mark and its history                                        |
+| [`tools/trace-mark.py`](tools/trace-mark.py)                                                         | Turns a drawn emblem into a clean mark in the frame                             |
+| [`tools/preview-marks.mjs`](tools/preview-marks.mjs)                                                 | Shows marks side by side, to judge a new one                                    |
+| [`tools/build-lockups.py`](tools/build-lockups.py)                                                   | Builds the lockups from the marks and the font                                  |
+| [`tools/sheet.mjs`](tools/sheet.mjs), [`tools/split-sheet.py`](tools/split-sheet.py)                 | Put all marks on one sheet for an image model, and cut its answer apart         |
+| [`frame/style-reference.png`](frame/style-reference.png)                                             | Three finished marks, to attach to an image prompt                              |
+| [`frame/sheet.png`](frame/sheet.png)                                                                 | All marks on one sheet, to send to an image model; rebuilt by `tools/sheet.mjs` |
+| [`.claude/skills/family-mark/`](.claude/skills/family-mark/SKILL.md)                                 | How a new mark is found, prompted, judged, and placed                           |
 
 ## The idea
 
@@ -85,6 +88,15 @@ rest: the ring width **W = 10**.
 | Top limit  | about y = 38, which is 1.5 W below the window | where the motif's mass ends at the top; see below         |
 | Side limit | radius 92, which is W/2 inside                | parts of the motif that are not its base stay inside this |
 | Base zone  | below y = 170                                 | here the motif may run to the window's edge and is cut    |
+
+### The small version
+
+Below 128 pixels a mark is shown in its small version, `mark-small.svg`: the same figure, pose,
+and colors, redrawn with less detail. Hair is a few large shapes, garments lose their fold lines,
+outlines are bolder, and the bronze parts are a little larger. The frame changes in one point:
+**there is no paper ring.** The window reaches the gold ring (radius 107), and the motif fills it,
+with its mass ending at about y = 28. At small sizes the empty ring would only make the motif
+smaller.
 
 ## Placing a motif
 

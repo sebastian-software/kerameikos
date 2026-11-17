@@ -186,12 +186,46 @@ numpy, scipy, and Pillow, and the `potrace` and `npx` commands.
 - **Check what the window cuts.** A motif scaled up a few percent can lose a hand or the edge of
   a garment at the window. Describe the traced mark, not the drawing you remember.
 
+## The small version
+
+Every mark also needs a small version for sizes below 128 pixels (`mark-small.svg`). Do not
+simplify it by algorithm and do not reduce it to the bronze object alone: closing lines
+automatically merges arm and cloak and erases joints that carry meaning, and an object without
+its figure is a pictogram, not the brand. Let the image model redraw the mark with less detail.
+
+1. **Put all marks on one sheet** and send it in one request, so that the small versions come
+   back alike:
+
+   ```sh
+   NODE_PATH=$(npm root -g) node tools/sheet.mjs sheet.png
+   ```
+
+2. **Prompt** with the sheet attached; the wording is in
+   [`references/prompts.md`](references/prompts.md#small-versions). For a single mark, attach
+   that mark alone and use the same wording.
+3. **Cut the answer apart** and trace each piece in small mode, which drops the paper ring and
+   lets the motif fill the window up to the gold ring:
+
+   ```sh
+   python3 tools/split-sheet.py answer.png /tmp/small
+   CLEAN_SMALL=1 python3 tools/trace-mark.py /tmp/small/naos.png marks/naos Naos 1.02 0 3
+   ```
+
+   Choose factor and offset so that the motif's mass ends at about y = 28 and nothing but the
+   base touches the gold ring. Keep the drawing as `drawing-small.webp`.
+
+4. **Judge at 32, 48, and 64 pixels** beside the full mark at 128, with
+   `tools/preview-marks.mjs`: it must be the same figure, recognizable at a glance.
+
 ## Recording the mark
 
 A mark is done when the repository holds:
 
 - `marks/<product>/mark.svg`, `mark-on-dark.svg`, `mark-mono.svg`, and `drawing.webp`, the
   drawing it was traced from;
+- the small version, `mark-small.svg` with its `-on-dark` and `-mono` files and
+  `drawing-small.webp`;
+- the lockups, rebuilt with `python3 tools/build-lockups.py`;
 - `marks/<product>/README.md` with the product in one line, the idea, what navy, paper, and
   bronze are in this mark, the decisions that a redrawing must keep, what was tried and
   dropped and why, and the placement. The pages of Terminaro, Curano, and Agoros are the
