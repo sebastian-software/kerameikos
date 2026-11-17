@@ -1,9 +1,10 @@
-"""Build the asset overview page for GitHub Pages.
+"""Build the asset overview page for GitHub Pages, with one brand package per product.
 
 usage: python3 tools/build-site.py [outdir]   (default: _site)
 
 Writes one static index.html that shows every product's marks, small versions, and lockups with
-download links, the palette, the typeface, and the frame, and copies the files it links to. The
+download links, the palette, the typeface, the theme, and the frame, and copies the files it links
+to. Each product also gets a zip file with everything a site or document needs. The
 products and their motifs come from the members table in README.md, so a new member appears here
 once it is listed there. Needs only the Python standard library.
 """
@@ -11,6 +12,7 @@ import html
 import re
 import shutil
 import sys
+import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -62,6 +64,99 @@ def tile(product, file, label, bg, cls="tile"):
     )
 
 
+# Rendered by tools/build-icons.mjs; offered as plain downloads beside the tiles.
+RASTERS = [
+    ("icons/favicon.ico", "favicon.ico"),
+    ("icons/apple-touch-icon.png", "apple-touch-icon.png"),
+    ("icons/icon-192.png", "icon-192.png"),
+    ("icons/icon-512.png", "icon-512.png"),
+    ("png/mark.png", "mark.png"),
+    ("png/mark-on-dark.png", "mark-on-dark.png"),
+    ("png/lockup.png", "lockup.png"),
+    ("png/lockup-on-dark.png", "lockup-on-dark.png"),
+]
+
+
+def rasters(product):
+    links = [
+        f'<a href="marks/{product}/{path}" download>{e(label)}</a>'
+        for path, label in RASTERS
+        if (ROOT / "marks" / product / path).exists()
+    ]
+    return f'<p class="files">{"".join(links)}</p>' if links else ""
+
+
+PACKAGE_README = """{name} brand package
+{rule}
+
+From Kerameikos, the brand of Sebastian Software's products with ancient-Greek names:
+{site}
+
+Files
+-----
+
+mark.svg, mark-on-dark.svg, mark-mono.svg
+    The full mark, from 192 pixels up. "On dark" has a paper disc under the mark for dark
+    surfaces; "mono" is for one-color print.
+mark-small.svg, mark-small-on-dark.svg, mark-small-mono.svg
+    The small version, below 192 pixels and beside the name.
+lockup.svg, lockup-on-dark.svg, png/lockup*.png
+    Mark and name, for emails, slides, and documents. On websites set the name as live text.
+png/mark.png, png/mark-on-dark.png
+    The full mark at 1024 pixels, for tools that do not take SVG.
+icons/
+    favicon.ico (16, 32, 48), apple-touch-icon.png (180), icon-192.png and icon-512.png for a
+    web app manifest.
+fonts/
+    Cinzel Hellenic, for the product name as live text. SIL Open Font License, see OFL.txt.
+
+In the <head> of a website
+--------------------------
+
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/mark-small-on-dark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+In a web app manifest
+---------------------
+
+"icons": [
+  {{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }},
+  {{ "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }}
+]
+
+Rules
+-----
+
+Clear space of half the mark's height on every side. Never recolor, stretch, rotate, crop,
+or outline the mark, and put it on photographs only with its paper disc. The full style guide:
+{repo}/blob/main/DESIGN.md
+
+The marks, lockups, and icons are the brand of Sebastian Software and are not licensed for use
+outside its products. The typeface is licensed under the SIL Open Font License (OFL.txt).
+"""
+
+
+def package(name, slug):
+    """A zip with every file of one product, a short guide, and the typeface."""
+    src = ROOT / "marks" / slug
+    path = OUT / "packages" / f"{slug}.zip"
+    path.parent.mkdir(exist_ok=True)
+    with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as z:
+        for f in sorted(src.glob("*.svg")):
+            z.write(f, f"{slug}/{f.name}")
+        for sub in ("icons", "png"):
+            for f in sorted((src / sub).glob("*")):
+                z.write(f, f"{slug}/{sub}/{f.name}")
+        for font in ("CinzelHellenic-Regular.woff2", "CinzelHellenic-Regular.ttf"):
+            z.write(ROOT / font, f"{slug}/fonts/{font}")
+        z.write(ROOT / "OFL.txt", f"{slug}/fonts/OFL.txt")
+        guide = PACKAGE_README.format(
+            name=name, rule="=" * (len(name) + 14), site=f"https://sebastian-software.github.io/kerameikos/#{slug}", repo=REPO
+        )
+        z.writestr(f"{slug}/README.txt", guide)
+
+
 def sizes(product):
     full, small = f"marks/{product}/mark.svg", f"marks/{product}/mark-small.svg"
     cells = []
@@ -95,11 +190,13 @@ for name, slug, motif, stands in members:
       <h2>{e(name)}</h2>
       <p class="what">{description(slug)}</p>
       <p class="motif"><span class="label">Mark</span> {e(motif)}: {e(stands[0].lower() + stands[1:])}.</p>
-      <p class="links"><a href="{REPO}/blob/main/marks/{slug}/README.md">Idea and history</a></p>
+      <p class="links"><a class="package" href="packages/{slug}.zip" download>Brand package (.zip)</a>
+      <a href="{REPO}/blob/main/marks/{slug}/README.md">Idea and history</a></p>
     </div>
   </header>
   <div class="grid">{''.join(tile(slug, *f) for f in FILES)}</div>
   <div class="grid lockups">{''.join(tile(slug, *f, cls="tile wide") for f in LOCKUPS)}</div>
+  {rasters(slug)}
   {sizes(slug)}
 </section>"""
     )
@@ -154,7 +251,11 @@ nav {{ display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; margin-top: 1.5rem;
 .motif {{ margin: 0.45rem 0 0; color: var(--ink-2); max-width: 46rem; }}
 .label {{ font: 0.6875rem/1 var(--mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent);
   margin-right: 0.35rem; }}
-.links {{ margin: 0.4rem 0 0; font-size: 0.875rem; }}
+.links {{ margin: 0.5rem 0 0; font-size: 0.875rem; display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; align-items: center; }}
+.package {{ background: var(--accent); color: #fff; padding: 0.35rem 0.75rem; text-decoration: none; }}
+.product .files {{ margin: 1rem 0 0; font: 0.75rem/1.4 var(--mono); }}
+pre {{ font: 0.8125rem/1.6 var(--mono); background: #fdfcf8; border: 1px solid var(--hair); padding: 1rem; overflow-x: auto; }}
+p code {{ font: 0.9em var(--mono); }}
 .grid {{ display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px;
   background: var(--hair); border: 1px solid var(--hair); }}
 .grid.lockups {{ grid-template-columns: repeat(2, 1fr); margin-top: 1rem; }}
@@ -194,7 +295,7 @@ footer {{ padding: 2rem 0 3rem; color: var(--ink-3); font-size: 0.875rem; }}
   <div class="eyebrow">Sebastian Software · Brand assets</div>
   <h1>Kerameikos</h1>
   <p class="lede">The brand assets of our products with ancient-Greek names: marks, small versions,
-  lockups, palette, and typeface. The Kerameikos was the potters' quarter of Athens, where the
+  lockups, icons, palette, typeface, and theme, and a brand package per product. The Kerameikos was the potters' quarter of Athens, where the
   painted vases were made whose style the marks follow. Click any file to download it. The rules are in the
   <a href="{REPO}/blob/main/DESIGN.md">style guide</a> and the
   <a href="{REPO}/blob/main/README.md">frame rule</a>.</p>
@@ -231,6 +332,21 @@ footer {{ padding: 2rem 0 3rem; color: var(--ink-3); font-size: 0.875rem; }}
 </div></div>
 
 <div class="band"><div class="wrap">
+  <h3>Theme</h3>
+  <p>The palette as code, generated from the style guide, for websites of the family:</p>
+  <p class="files"><a href="theme/theme.css" download>theme.css</a>
+  <a href="theme/ardo.js" download>ardo.js</a>
+  <a href="theme/tokens.json" download>tokens.json</a></p>
+  <p><code>theme.css</code> sets the colors as <code>--kr-*</code> custom properties, light and
+  dark, loads Cinzel Hellenic, and styles the lockup as live text (<code>.kr-lockup</code>).
+  <code>ardo.js</code> is the theme for sites built with Ardo. Both come with the package:</p>
+  <pre>pnpm add github:sebastian-software/kerameikos
+
+import "kerameikos/theme.css"
+import {{ KERAMEIKOS_ARDO_THEME }} from "kerameikos/ardo"</pre>
+</div></div>
+
+<div class="band parchment"><div class="wrap">
   <h3>Typeface</h3>
   <p class="type">ΑΒΓΔ PALAMEDES TEREON</p>
   <p>Cinzel Hellenic, for product names and headlines only, in capitals with 0.16 em spacing.
@@ -240,7 +356,7 @@ footer {{ padding: 2rem 0 3rem; color: var(--ink-3); font-size: 0.875rem; }}
   <a href="OFL.txt">OFL.txt</a></p>
 </div></div>
 
-<div class="band parchment"><div class="wrap">
+<div class="band"><div class="wrap">
   <h3>Frame</h3>
   <div class="frame">
     <a href="frame/ring-template.svg" download><img src="frame/ring-template.svg" alt="Ring frame with guides"></a>
@@ -262,10 +378,15 @@ OUT.mkdir(parents=True)
 for name in ("CinzelHellenic-Regular.woff2", "CinzelHellenic-Regular.ttf", "OFL.txt"):
     shutil.copy2(ROOT / name, OUT / name)
 shutil.copytree(ROOT / "frame", OUT / "frame", ignore=shutil.ignore_patterns("*.png"))
-for _, slug, _, _ in members:
+shutil.copytree(ROOT / "theme", OUT / "theme")
+for name, slug, _, _ in members:
     dst = OUT / "marks" / slug
     dst.mkdir(parents=True)
     for f in (ROOT / "marks" / slug).glob("*.svg"):
         shutil.copy2(f, dst / f.name)
+    for sub in ("icons", "png"):
+        if (ROOT / "marks" / slug / sub).exists():
+            shutil.copytree(ROOT / "marks" / slug / sub, dst / sub)
+    package(name, slug)
 (OUT / ".nojekyll").write_text("")
 print(f"{len(members)} products, written to {OUT}")

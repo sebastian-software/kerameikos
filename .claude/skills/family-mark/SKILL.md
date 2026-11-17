@@ -226,6 +226,8 @@ A mark is done when the repository holds:
 - the small version, `mark-small.svg` with its `-on-dark` and `-mono` files and
   `drawing-small.png`;
 - the lockups, rebuilt with `python3 tools/build-lockups.py`;
+- the icons and PNG files, rendered with
+  `NODE_PATH=$(npm root -g) node tools/build-icons.mjs <product>`;
 - `marks/<product>/README.md` with the product in one line, the idea, what navy, paper, and
   bronze are in this mark, the decisions that a redrawing must keep, what was tried and
   dropped and why, and the placement. The pages of Terminaro, Curano, and Agoros are the

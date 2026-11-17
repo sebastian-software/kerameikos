@@ -117,14 +117,25 @@ inside one shared ring. The frame rule, the members, and the reasons behind each
 the [README](README.md); each product's page under `marks/<product>/` records its idea and its
 history.
 
-| File                 | Use                                                                             |
-| -------------------- | ------------------------------------------------------------------------------- |
-| `mark.svg`           | On paper or any light surface, transparent background                           |
-| `mark-on-dark.svg`   | On dark surfaces, with a paper disc under the mark; the motif is never inverted |
-| `mark-mono.svg`      | Where only one color is possible: embossing, stamps, single-color print         |
-| `mark-small.svg`     | Below 192 pixels: favicons, app icons, avatars; also `-on-dark` and `-mono`     |
-| `lockup.svg`         | Mark and name side by side, on light surfaces                                   |
-| `lockup-on-dark.svg` | Mark and name side by side, on dark surfaces                                    |
+| File                 | Use                                                                                |
+| -------------------- | ---------------------------------------------------------------------------------- |
+| `mark.svg`           | On paper or any light surface, transparent background                              |
+| `mark-on-dark.svg`   | On dark surfaces, with a paper disc under the mark; the motif is never inverted    |
+| `mark-mono.svg`      | Where only one color is possible: embossing, stamps, single-color print            |
+| `mark-small.svg`     | Below 192 pixels: favicons, app icons, avatars; also `-on-dark` and `-mono`        |
+| `lockup.svg`         | Mark and name side by side, on light surfaces                                      |
+| `lockup-on-dark.svg` | Mark and name side by side, on dark surfaces                                       |
+| `icons/`             | `favicon.ico`, `apple-touch-icon.png`, and the manifest icons, from the small mark |
+| `png/`               | The full mark and the lockups as PNG, for tools that do not take SVG               |
+
+Every product has a brand package on the
+[overview page](https://sebastian-software.github.io/kerameikos/): a zip with all of these
+files, the typeface, and a short guide with the HTML for a site's head.
+
+**Icons** use the small mark at every file size, because they are seen at icon size: the
+favicon and the manifest icons with the paper disc, since tabs and launchers can be light or
+dark; the touch icon as the small mark on an opaque paper square with room around it, since the
+system rounds its corners.
 
 - **Clear space:** at least half the mark's height on every side, free of text and edges.
 - **Which version at which size:** the full mark from 192 pixels up; below that the small
@@ -182,6 +193,11 @@ The palette has two bronzes, and the difference matters:
 | `accent`, `accent-2` | `#866026`, `#6f4f1e` | `#d2a660`, `#e2bd80` | Interaction and emphasis, and its hover state             |
 | `accent-wash`        | `#f4ecda`            | `#2a2416`            | A selected row, a highlighted line                        |
 | `on-accent`          | `#ffffff`            | `#0c1724`            | Text on a bronze action                                   |
+
+These tokens exist as code in `theme/`: `theme.css` as `--kr-*` custom properties, `ardo.js` as
+the Ardo theme with the names Ardo uses (`paper` is `bg`, `accent` is `brand`, `listing` is
+`codeBg`), and `tokens.json`. They are generated from this file's front matter by
+`tools/build-theme.py`; change a color here, never there.
 
 Terminal green and amber are reserved for real CLI output. No gradients, no glow, no purple.
 
