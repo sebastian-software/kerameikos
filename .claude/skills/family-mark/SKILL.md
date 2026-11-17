@@ -52,9 +52,8 @@ have shown:
   bowl, a sundial each stayed a prop. The herald sounding the trumpet and the muse reading the
   scroll worked on the first try. When an object motif fails, ask who would hold it.
 - **Single pieces of architecture fail.** Two columns and a doorway from the front are a bank
-  portal, however close the crop. One column on a mound with a bronze piece on top is a
-  lighthouse, and collides with Tereon. A building works only as a small thing in someone's
-  hand.
+  portal, however close the crop. One column on a mound with a bronze piece on top is a lighthouse,
+  the silhouette of the first Tereon mark. A building works only as a small thing in someone's hand.
 - **A mark need not explain itself, but it must not point the wrong way.** Nobody reads
   "translation" from the Palamedes head, and that is fine. But a winged runner reads as
   delivery, a ship under sail as shipping, scales as justice, a bowl with a snake as a
@@ -65,14 +64,14 @@ have shown:
   sign, not the goods on the table.
 - **Do not make it more literal than the product.** A fruit seller behind heaps of fruit became
   a food label, and the product is not for fruit sellers. Mixed wares say "any trade".
-- **If the product is about people meeting, show people.** Terminaro went through a water clock
-  and a sundial before the handshake of two people; the owner's sentence "every appointment is
-  an agreement between two people" was the metaphor.
-- **Check against the family before proposing.** Two marks must not share a silhouette. Keep
-  heads, figures, and scenes mixed, and vary the figures in age, gender, and hair: the family
-  has a laureled youth, a curly-haired herald, a man with long tied hair, a bearded elder, and
-  women with a knot and with open hair. A second craftsman with a tool needs a clearly different object and
-  pose.
+- **If the product is about people meeting, show people.** Terminaro went through a water clock and
+  a sundial before the handshake of two people; the owner's sentence "every appointment is an
+  agreement between two people" was the metaphor.
+- **Check against the family before proposing.** Two marks must not share a silhouette. Keep heads,
+  figures, and scenes mixed, and vary the figures in age, gender, and hair: the family has a
+  laureled youth, a curly-haired herald, a helmeted watchman, a man with long tied hair, a bearded
+  elder, and women with a knot and with open hair. A second craftsman with a tool needs a clearly
+  different object and pose.
 - **When three correction rounds have not fixed a picture, the metaphor is wrong.** Say so and
   step back. Ask whether the owner dislikes the execution or the idea; they usually know.
 
@@ -81,7 +80,7 @@ have shown:
 The template and worked examples are in [`references/prompts.md`](references/prompts.md). The
 reasons behind its parts:
 
-- **Attach the style reference.** `frame/style-reference.png` shows three finished marks. It
+- **Attach the style reference.** `frame/style-reference.png` shows three finished figure marks. It
   fixes line quality and detail better than any description. Regenerate it with
   `tools/preview-marks.mjs --reference` when better examples exist.
 - **One emblem per run.** A sheet of four gives each a quarter of the resolution, and the
