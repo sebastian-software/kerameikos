@@ -6,7 +6,8 @@ Writes one static index.html that shows every product's marks, small versions, a
 download links, the palette, the typeface, the theme, and the frame, and copies the files it links
 to. Each product also gets a zip file with everything a site or document needs. The
 products and their motifs come from the members table in README.md, so a new member appears here
-once it is listed there. Needs only the Python standard library.
+once it is listed there; their links and status come from products.json. Live numbers for open-source
+products are fetched in the browser from oss-metrics. Needs only the Python standard library.
 """
 import html
 import re
@@ -25,6 +26,15 @@ members = re.findall(
 )
 if not members:
     sys.exit("no members found in README.md")
+
+import json
+
+products = json.loads((ROOT / "products.json").read_text())
+missing = [slug for _, slug, _, _ in members if slug not in products]
+if missing:
+    sys.exit("products.json lacks: " + ", ".join(missing))
+
+METRICS = "https://metrics.sebastian-software.com/v1/metrics.json"
 
 # Each file is shown on the background it is made for.
 FILES = [
@@ -158,6 +168,36 @@ def package(name, slug):
 
 
 
+def mark_img(slug, cls=""):
+    """The mark, with its paper disc when the page is dark."""
+    c = f' class="{cls}"' if cls else ""
+    return (
+        f'<picture><source srcset="marks/{slug}/mark-on-dark.svg" media="(prefers-color-scheme: dark)">'
+        f'<img{c} src="marks/{slug}/mark.svg" alt=""></picture>'
+    )
+
+
+def facts(slug):
+    """Status badge and links to the product's homepage and repository."""
+    p = products[slug]
+    if p["status"] == "open-source":
+        badge = f'<span class="badge open">Open source · {e(p["license"])}</span>'
+    else:
+        badge = '<span class="badge">Commercial</span>'
+    links = [badge]
+    if p.get("homepage"):
+        host = re.sub(r"^https?://|/$", "", p["homepage"])
+        links.append(f'<a href="{e(p["homepage"])}">{e(host)}</a>')
+    if p.get("repository"):
+        links.append(f'<a href="{e(p["repository"])}">GitHub</a>')
+    if not p.get("homepage") and not p.get("repository"):
+        links.append('<span class="quiet">No public page yet</span>')
+    live = (
+        f'<p class="metrics" data-repo="{e(p["metrics"])}" hidden></p>' if p.get("metrics") else ""
+    )
+    return f'<p class="facts">{"".join(links)}</p>{live}'
+
+
 def description(slug):
     """The product line of a mark's page: what the product is, without notes about the mark."""
     text = (ROOT / "marks" / slug / "README.md").read_text()
@@ -177,10 +217,11 @@ for name, slug, motif, stands in members:
         f"""
 <section class="product" id="{slug}">
   <header>
-    <img class="lead" src="marks/{slug}/mark.svg" alt="">
+    {mark_img(slug, "lead")}
     <div>
       <h2>{e(name)}</h2>
       <p class="what">{description(slug)}</p>
+      {facts(slug)}
       <p class="motif"><span class="label">Mark</span> {e(motif)}: {e(stands[0].lower() + stands[1:])}.</p>
       <p class="links"><a class="package" href="packages/{slug}.zip" download>Brand package (.zip)</a>
       <a href="{REPO}/blob/main/marks/{slug}/README.md">Idea and history</a></p>
@@ -207,73 +248,76 @@ page = f"""<!doctype html>
 <title>Kerameikos</title>
 <meta name="description" content="Marks, small versions, lockups, palette, and typeface of the products with ancient-Greek names.">
 <link rel="icon" href="marks/palamedes/mark-small.svg">
+<link rel="stylesheet" href="theme/theme.css">
 <style>
-@font-face {{ font-family: "Cinzel Hellenic"; src: url("CinzelHellenic-Regular.woff2") format("woff2"); font-display: swap; }}
-:root {{
-  --paper: #faf9f4; --parchment: #f3efe3; --mist: #e8edf2; --ink: #0e2a4d; --ink-2: #3f5471;
-  --ink-3: #526176; --hair: #ddd6c6; --accent: #866026; --night: #0c1724;
-  --display: "Cinzel Hellenic", "Times New Roman", serif;
-  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-}}
+:root {{ --night: #0c1724; }}
 * {{ box-sizing: border-box; }}
-body {{ margin: 0; background: var(--paper); color: var(--ink);
+body {{ margin: 0; background: var(--kr-paper); color: var(--kr-ink);
   font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }}
-a {{ color: var(--accent); }}
+a {{ color: var(--kr-accent); }}
 .wrap {{ max-width: 80rem; margin: 0 auto; padding: 0 1.25rem; }}
-.top {{ border-bottom: 1px solid var(--hair); padding: 3.5rem 0 2rem; }}
-.eyebrow {{ font: 0.6875rem/1 var(--mono); letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-3); }}
-h1, h2 {{ font-family: var(--display); font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; margin: 0; }}
+.top {{ border-bottom: 1px solid var(--kr-hair); padding: 3.5rem 0 2rem; }}
+.eyebrow {{ font: 0.6875rem/1 var(--kr-mono); letter-spacing: 0.22em; text-transform: uppercase; color: var(--kr-ink-3); }}
+h1, h2 {{ font-family: var(--kr-display); font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; margin: 0; }}
 h1 {{ font-size: clamp(1.9rem, 4.5vw, 3.1rem); line-height: 1.15; margin-top: 0.75rem; }}
 h2 {{ font-size: 1.6rem; letter-spacing: 0.16em; }}
-h3 {{ font: 0.75rem/1 var(--mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 1rem; }}
-.lede {{ max-width: 42rem; color: var(--ink-2); font-size: 1.125rem; }}
+h3 {{ font: 0.75rem/1 var(--kr-mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--kr-ink-3); margin: 0 0 1rem; }}
+.lede {{ max-width: 42rem; color: var(--kr-ink-2); font-size: 1.125rem; }}
 nav {{ display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; margin-top: 1.5rem; font-size: 0.9375rem; }}
 .family {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr)); gap: 1rem; margin-top: 2rem; }}
-.family a {{ text-decoration: none; color: var(--ink); text-align: center; font-size: 0.8125rem;
+.family a {{ text-decoration: none; color: var(--kr-ink); text-align: center; font-size: 0.8125rem;
   letter-spacing: 0.12em; text-transform: uppercase; }}
 .family img {{ width: 100%; display: block; margin-bottom: 0.4rem; }}
-.band {{ padding: 3rem 0; border-bottom: 1px solid var(--hair); }}
-.band.parchment {{ background: var(--parchment); }}
+.band {{ padding: 3rem 0; border-bottom: 1px solid var(--kr-hair); }}
+.band.parchment {{ background: var(--kr-parchment); }}
 .product {{ padding: 5rem 0; }}
 .product header {{ display: flex; gap: 1.5rem; align-items: center; margin-bottom: 1.75rem; }}
 .product .lead {{ width: 6rem; height: 6rem; flex: none; }}
+.facts {{ margin: 0.5rem 0 0; display: flex; flex-wrap: wrap; gap: 0.3rem 1.25rem; align-items: center; font-size: 0.9375rem; }}
+.badge {{ font: 0.6875rem/1 var(--kr-mono); letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 0.55rem;
+  border: 1px solid var(--kr-hair); color: var(--kr-ink-2); }}
+.badge.open {{ border-color: var(--kr-accent); color: var(--kr-accent); }}
+.quiet {{ color: var(--kr-ink-3); }}
+.metrics {{ margin: 0.45rem 0 0; font: 0.8125rem/1.5 var(--kr-mono); color: var(--kr-ink-2); }}
+.family picture, .product picture {{ display: contents; }}
 .what {{ margin: 0.4rem 0 0; font-size: 1.0625rem; max-width: 46rem; }}
-.what code {{ font: 0.9em var(--mono); }}
-.motif {{ margin: 0.45rem 0 0; color: var(--ink-2); max-width: 46rem; }}
-.label {{ font: 0.6875rem/1 var(--mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent);
+.what code {{ font: 0.9em var(--kr-mono); }}
+.motif {{ margin: 0.45rem 0 0; color: var(--kr-ink-2); max-width: 46rem; }}
+.label {{ font: 0.6875rem/1 var(--kr-mono); letter-spacing: 0.16em; text-transform: uppercase; color: var(--kr-accent);
   margin-right: 0.35rem; }}
 .links {{ margin: 0.5rem 0 0; font-size: 0.875rem; display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; align-items: center; }}
-.package {{ background: var(--accent); color: #fff; padding: 0.35rem 0.75rem; text-decoration: none; }}
-.product .files {{ margin: 1rem 0 0; font: 0.75rem/1.4 var(--mono); }}
-pre {{ font: 0.8125rem/1.6 var(--mono); background: #fdfcf8; border: 1px solid var(--hair); padding: 1rem; overflow-x: auto; }}
-p code {{ font: 0.9em var(--mono); }}
+.package {{ background: var(--kr-accent); color: var(--kr-on-accent); padding: 0.35rem 0.75rem; text-decoration: none; }}
+.product .files {{ margin: 1rem 0 0; font: 0.75rem/1.4 var(--kr-mono); }}
+pre {{ font: 0.8125rem/1.6 var(--kr-mono); background: var(--kr-listing); border: 1px solid var(--kr-hair); padding: 1rem; overflow-x: auto; }}
+p code {{ font: 0.9em var(--kr-mono); }}
 .grid {{ display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px;
-  background: var(--hair); border: 1px solid var(--hair); }}
+  background: var(--kr-hair); border: 1px solid var(--kr-hair); }}
 .grid.lockups {{ grid-template-columns: repeat(2, 1fr); margin-top: 1rem; }}
 .tile {{ margin: 0; padding: 1rem; display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }}
-.tile.light {{ background: var(--paper); }}
+.tile.light {{ background: var(--kr-mark-paper); }}
+.tile.light figcaption a {{ color: #866026; }}
 .tile.dark {{ background: var(--night); }}
 .tile img {{ width: 100%; max-width: 12rem; aspect-ratio: 1; display: block; }}
 .tile.small {{ justify-content: flex-end; }}
 .tile.small img {{ width: 4rem; height: 4rem; margin-block: auto; }}
 .tile.wide img {{ max-width: 100%; aspect-ratio: auto; height: 3.5rem; width: auto; }}
-.tile figcaption {{ font: 0.6875rem/1 var(--mono); letter-spacing: 0.14em; text-transform: uppercase; }}
+.tile figcaption {{ font: 0.6875rem/1 var(--kr-mono); letter-spacing: 0.14em; text-transform: uppercase; }}
 .tile.dark figcaption a {{ color: #d2a660; }}
 .palette {{ list-style: none; padding: 0; margin: 0; display: grid;
   grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: 1rem; }}
 .palette li {{ display: grid; grid-template-columns: 3rem 1fr; column-gap: 0.75rem; align-items: center; }}
-.chip {{ grid-row: span 3; width: 3rem; height: 3rem; border: 1px solid var(--hair); }}
-.palette code {{ font: 0.8125rem var(--mono); color: var(--ink-2); }}
-.palette small {{ color: var(--ink-3); line-height: 1.35; }}
-.type {{ font-family: var(--display); font-size: clamp(1.75rem, 5vw, 3rem); letter-spacing: 0.16em; margin: 0.5rem 0; }}
+.chip {{ grid-row: span 3; width: 3rem; height: 3rem; border: 1px solid var(--kr-hair); }}
+.palette code {{ font: 0.8125rem var(--kr-mono); color: var(--kr-ink-2); }}
+.palette small {{ color: var(--kr-ink-3); line-height: 1.35; }}
+.type {{ font-family: var(--kr-display); font-size: clamp(1.75rem, 5vw, 3rem); letter-spacing: 0.16em; margin: 0.5rem 0; }}
 .files {{ display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }}
 .frame {{ display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }}
-.frame img {{ width: 12rem; height: 12rem; }}
+.frame img {{ width: 12rem; height: 12rem; background: var(--kr-mark-paper); }}
 .usage {{ display: grid; grid-template-columns: 9rem 1fr; gap: 0.75rem 1.5rem; margin: 0; max-width: 56rem; }}
-.usage dt {{ font: 0.75rem/1.9 var(--mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }}
-.usage dd {{ margin: 0; color: var(--ink-2); }}
+.usage dt {{ font: 0.75rem/1.9 var(--kr-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--kr-accent); }}
+.usage dd {{ margin: 0; color: var(--kr-ink-2); }}
 @media (max-width: 40rem) {{ .usage {{ grid-template-columns: 1fr; gap: 0.2rem; }} .usage dd {{ margin-bottom: 0.75rem; }} }}
-footer {{ padding: 2rem 0 3rem; color: var(--ink-3); font-size: 0.875rem; }}
+footer {{ padding: 2rem 0 3rem; color: var(--kr-ink-3); font-size: 0.875rem; }}
 @media (max-width: 64rem) {{ .grid {{ grid-template-columns: repeat(3, 1fr); }} }}
 @media (max-width: 40rem) {{ .grid {{ grid-template-columns: repeat(2, 1fr); }} .grid.lockups {{ grid-template-columns: 1fr; }} .tile.wide img {{ height: 2.75rem; }} .product header {{ align-items: flex-start; }} .product .lead {{ width: 4rem; height: 4rem; }} }}
 </style>
@@ -287,7 +331,7 @@ footer {{ padding: 2rem 0 3rem; color: var(--ink-3); font-size: 0.875rem; }}
   painted vases were made whose style the marks follow. Click any file to download it. The rules are in the
   <a href="{REPO}/blob/main/DESIGN.md">style guide</a> and the
   <a href="{REPO}/blob/main/README.md">frame rule</a>.</p>
-  <div class="family">{''.join(f'<a href="#{slug}"><img src="marks/{slug}/mark.svg" alt="">{e(name)}</a>' for name, slug, _, _ in members)}</div>
+  <div class="family">{''.join(f'<a href="#{slug}">{mark_img(slug)}{e(name)}</a>' for name, slug, _, _ in members)}</div>
 </div></div>
 
 <div class="band parchment"><div class="wrap">
@@ -355,6 +399,44 @@ import {{ KERAMEIKOS_ARDO_THEME }} from "kerameikos/ardo"</pre>
 </div></div>
 
 <footer><div class="wrap">Generated from <a href="{REPO}">sebastian-software/kerameikos</a>.</div></footer>
+<script>
+// Live numbers for the open-source products, from oss-metrics. Without them the page loses nothing.
+(async () => {{
+  const rows = document.querySelectorAll(".metrics[data-repo]")
+  if (!rows.length) return
+  let data
+  try {{
+    const response = await fetch("{METRICS}")
+    if (!response.ok) return
+    data = await response.json()
+  }} catch {{
+    return
+  }}
+  const number = new Intl.NumberFormat("en-US")
+  const date = new Intl.DateTimeFormat("en-US", {{ dateStyle: "medium" }})
+  const sum = (map, repo, read) => {{
+    const values = Object.values(map || {{}}).filter((p) => p.repo === repo).map(read)
+    if (!values.length || values.some((v) => typeof v !== "number")) return null
+    return values.reduce((a, b) => a + b, 0)
+  }}
+  for (const row of rows) {{
+    const repo = row.dataset.repo
+    const gh = (data.github || {{}})[repo]
+    const parts = []
+    if (gh && gh.release) {{
+      parts.push(`v${{gh.release.version}}, ${{date.format(new Date(gh.release.publishedAt))}}`)
+    }}
+    if (gh && typeof gh.stars === "number") parts.push(`${{number.format(gh.stars)}} stars`)
+    const npm = sum(data.npm, repo, (p) => p.monthlyDownloads)
+    if (npm) parts.push(`${{number.format(npm)}} npm downloads a month`)
+    const crates = sum(data.crates, repo, (p) => p.downloads30Days && p.downloads30Days.count)
+    if (crates) parts.push(`${{number.format(crates)}} crate downloads in 30 days`)
+    if (!parts.length) continue
+    row.textContent = parts.join(" · ")
+    row.hidden = false
+  }}
+}})()
+</script>
 </body>
 </html>
 """
@@ -363,7 +445,7 @@ if OUT.exists():
     shutil.rmtree(OUT)
 OUT.mkdir(parents=True)
 (OUT / "index.html").write_text(page)
-for name in ("CinzelHellenic-Regular.woff2", "CinzelHellenic-Regular.ttf", "OFL.txt"):
+for name in ("CinzelHellenic-Regular.woff2", "CinzelHellenic-Regular.ttf", "OFL.txt", "products.json"):
     shutil.copy2(ROOT / name, OUT / name)
 shutil.copytree(ROOT / "frame", OUT / "frame", ignore=shutil.ignore_patterns("*.png"))
 shutil.copytree(ROOT / "theme", OUT / "theme")
