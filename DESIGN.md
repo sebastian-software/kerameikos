@@ -244,6 +244,22 @@ measure of 42 rem.
 - Third-party logos identify integrations, keep their own geometry, and are not shown as
   customers.
 
+## On other brands' pages
+
+Where a product appears on a page that belongs to another brand, such as the Sebastian Software
+website, a partner's site, or a conference page, it is a guest:
+
+- It brings its mark and its name, unchanged: the small mark beside the name or the lockup,
+  never recolored, restyled, or redrawn to match the host.
+- Everything else on the page stays the host's: illustrations, photographs, colors, and type.
+  The host's illustrations may show the product's use in the host's own style; they are not
+  redrawn in the vase style, and the vase style is not used for the host's artwork.
+- The full mark is the product's own showpiece. On a host page it stays small, where it marks
+  the product rather than illustrating the page.
+
+The same holds the other way round: a product's site shows the Sebastian Software and Sebastian
+Consulting logos unchanged, on a light ground, in its footer.
+
 ## Voice
 
 Precise, calm, verifiable. Name the reader's situation and the benefit in plain words first,
