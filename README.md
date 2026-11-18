@@ -26,31 +26,32 @@ licensed for use outside its products. The typeface Cinzel Hellenic is free soft
 
 ## Contents
 
-| Path                                                                                                 | What it is                                                                      |
-| ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| [`DESIGN.md`](DESIGN.md)                                                                             | The style guide: lockups, type, colors, layout, voice                           |
-| [`CinzelHellenic-Regular.ttf`](CinzelHellenic-Regular.ttf), [`.woff2`](CinzelHellenic-Regular.woff2) | The typeface for product names, under the [SIL OFL](OFL.txt)                    |
-| [`frame/ring-template.svg`](frame/ring-template.svg)                                                 | The frame with its guides                                                       |
-| [`frame/ring-blank.svg`](frame/ring-blank.svg)                                                       | The empty frame to draw a motif into                                            |
-| [`marks/<product>/mark.svg`](marks)                                                                  | A mark on paper, transparent background                                         |
-| [`marks/<product>/mark-on-dark.svg`](marks)                                                          | The same with a paper disc under it, for dark surfaces                          |
-| [`marks/<product>/mark-mono.svg`](marks)                                                             | The same in one color                                                           |
-| [`marks/<product>/mark-small.svg`](marks)                                                            | The small version, below 192 pixels; also `-on-dark` and `-mono`                |
-| [`marks/<product>/lockup.svg`](marks)                                                                | Mark and name, on light surfaces; `lockup-on-dark.svg` for dark                 |
-| [`marks/<product>/icons/`](marks)                                                                    | `favicon.ico`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`           |
-| [`marks/<product>/png/`](marks)                                                                      | The mark and lockups as PNG, for tools that do not take SVG                     |
-| [`marks/<product>/README.md`](marks)                                                                 | The idea behind the mark and its history                                        |
-| [`tools/trace-mark.py`](tools/trace-mark.py)                                                         | Turns a drawn emblem into a clean mark in the frame                             |
-| [`tools/preview-marks.mjs`](tools/preview-marks.mjs)                                                 | Shows marks side by side, to judge a new one                                    |
-| [`tools/build-lockups.py`](tools/build-lockups.py)                                                   | Builds the lockups from the marks and the font                                  |
-| [`theme/`](theme)                                                                                    | `theme.css`, `ardo.js`, `tokens.json`, generated from `DESIGN.md`               |
-| [`tools/build-theme.py`](tools/build-theme.py)                                                       | Writes `theme/` from the tokens in `DESIGN.md`; `--check` runs in CI            |
-| [`tools/build-icons.mjs`](tools/build-icons.mjs)                                                     | Renders `icons/` and `png/` of every mark                                       |
-| [`tools/build-site.py`](tools/build-site.py)                                                         | Builds the overview page and the brand packages that GitHub Pages publishes     |
-| [`tools/sheet.mjs`](tools/sheet.mjs), [`tools/split-sheet.py`](tools/split-sheet.py)                 | Put all marks on one sheet for an image model, and cut its answer apart         |
-| [`frame/style-reference.png`](frame/style-reference.png)                                             | Three finished marks, to attach to an image prompt                              |
-| [`frame/sheet.png`](frame/sheet.png)                                                                 | All marks on one sheet, to send to an image model; rebuilt by `tools/sheet.mjs` |
-| [`.claude/skills/family-mark/`](.claude/skills/family-mark/SKILL.md)                                 | How a new mark is found, prompted, judged, and placed                           |
+| Path                                                                                                 | What it is                                                                              |
+| ---------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| [`DESIGN.md`](DESIGN.md)                                                                             | The style guide: lockups, type, colors, layout, voice                                   |
+| [`CinzelHellenic-Regular.ttf`](CinzelHellenic-Regular.ttf), [`.woff2`](CinzelHellenic-Regular.woff2) | The typeface for product names, under the [SIL OFL](OFL.txt)                            |
+| [`frame/ring-template.svg`](frame/ring-template.svg)                                                 | The frame with its guides                                                               |
+| [`frame/ring-blank.svg`](frame/ring-blank.svg)                                                       | The empty frame to draw a motif into                                                    |
+| [`marks/<product>/mark.svg`](marks)                                                                  | A mark on paper, transparent background                                                 |
+| [`marks/<product>/mark-on-dark.svg`](marks)                                                          | The same with a paper disc under it, for dark surfaces                                  |
+| [`marks/<product>/mark-mono.svg`](marks)                                                             | The same in one color                                                                   |
+| [`marks/<product>/mark-small.svg`](marks)                                                            | The small version, below 192 pixels; also `-on-dark` and `-mono`                        |
+| [`marks/<product>/lockup.svg`](marks)                                                                | Mark and name, on light surfaces; `lockup-on-dark.svg` for dark                         |
+| [`marks/<product>/icons/`](marks)                                                                    | `favicon.ico`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`                   |
+| [`marks/<product>/png/`](marks)                                                                      | The mark and lockups as PNG, for tools that do not take SVG                             |
+| [`marks/<product>/README.md`](marks)                                                                 | The idea behind the mark and its history                                                |
+| [`tools/trace-mark.py`](tools/trace-mark.py)                                                         | Turns a drawn emblem into a clean mark in the frame                                     |
+| [`tools/preview-marks.mjs`](tools/preview-marks.mjs)                                                 | Shows marks side by side, to judge a new one                                            |
+| [`tools/build-lockups.py`](tools/build-lockups.py)                                                   | Builds the lockups from the marks and the font                                          |
+| [`products.json`](products.json)                                                                     | Each product's homepage, repository, open source or commercial, and its oss-metrics key |
+| [`theme/`](theme)                                                                                    | `theme.css`, `ardo.js`, `tokens.json`, generated from `DESIGN.md`                       |
+| [`tools/build-theme.py`](tools/build-theme.py)                                                       | Writes `theme/` from the tokens in `DESIGN.md`; `--check` runs in CI                    |
+| [`tools/build-icons.mjs`](tools/build-icons.mjs)                                                     | Renders `icons/` and `png/` of every mark                                               |
+| [`tools/build-site.py`](tools/build-site.py)                                                         | Builds the overview page and the brand packages that GitHub Pages publishes             |
+| [`tools/sheet.mjs`](tools/sheet.mjs), [`tools/split-sheet.py`](tools/split-sheet.py)                 | Put all marks on one sheet for an image model, and cut its answer apart                 |
+| [`frame/style-reference.png`](frame/style-reference.png)                                             | Three finished marks, to attach to an image prompt                                      |
+| [`frame/sheet.png`](frame/sheet.png)                                                                 | All marks on one sheet, to send to an image model; rebuilt by `tools/sheet.mjs`         |
+| [`.claude/skills/family-mark/`](.claude/skills/family-mark/SKILL.md)                                 | How a new mark is found, prompted, judged, and placed                                   |
 
 ## Using the theme
 
@@ -80,6 +81,17 @@ The lockup as live text:
 The colors live in the front matter of [`DESIGN.md`](DESIGN.md). After changing one, run
 `python3 tools/build-theme.py`; CI fails while `theme/` is out of date. After changing a mark,
 run `NODE_PATH=$(npm root -g) node tools/build-icons.mjs <product>` to render its icons again.
+
+## Products and live numbers
+
+[`products.json`](products.json) lists for every member its homepage, its public repository,
+whether it is open source (with its license) or commercial, and the repository name under which
+[oss-metrics](https://github.com/sebastian-software/oss-metrics) reports it. The overview page
+shows a badge and the links from it, and for open-source products it fetches the latest
+release, stars, and downloads from `metrics.sebastian-software.com` in the browser. If that
+fails, only the numbers are missing. oss-metrics lists public repositories with the
+`oss-project` topic; a commercial product has `"metrics": null`. The file is also exported as
+`kerameikos/products.json`. A new member needs an entry here, or the page build fails.
 
 ## The idea
 

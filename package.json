@@ -14,6 +14,7 @@
   ],
   "files": [
     "theme",
+    "products.json",
     "marks/*/*.svg",
     "marks/*/icons",
     "marks/*/png",
@@ -25,6 +26,7 @@
   "exports": {
     "./theme.css": "./theme/theme.css",
     "./tokens.json": "./theme/tokens.json",
+    "./products.json": "./products.json",
     "./ardo": {
       "types": "./theme/ardo.d.ts",
       "default": "./theme/ardo.js"

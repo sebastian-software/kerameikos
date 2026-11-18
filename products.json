@@ -1,0 +1,66 @@
+{
+  "palamedes": {
+    "name": "Palamedes",
+    "homepage": "https://palamedes.dev",
+    "repository": "https://github.com/sebastian-software/palamedes",
+    "status": "open-source",
+    "license": "MIT OR Apache-2.0",
+    "metrics": "palamedes"
+  },
+  "tereon": {
+    "name": "Tereon",
+    "homepage": "https://sebastian-software.github.io/tereon/",
+    "repository": null,
+    "status": "commercial",
+    "license": null,
+    "metrics": null
+  },
+  "stentaro": {
+    "name": "Stentaro",
+    "homepage": "https://stentaro.com",
+    "repository": null,
+    "status": "commercial",
+    "license": null,
+    "metrics": null
+  },
+  "terminaro": {
+    "name": "Terminaro",
+    "homepage": "https://terminaro.eu",
+    "repository": null,
+    "status": "commercial",
+    "license": null,
+    "metrics": null
+  },
+  "gramano": {
+    "name": "Gramano",
+    "homepage": null,
+    "repository": null,
+    "status": "commercial",
+    "license": null,
+    "metrics": null
+  },
+  "curano": {
+    "name": "Curano",
+    "homepage": null,
+    "repository": null,
+    "status": "commercial",
+    "license": null,
+    "metrics": null
+  },
+  "agoros": {
+    "name": "Agoros",
+    "homepage": null,
+    "repository": null,
+    "status": "commercial",
+    "license": null,
+    "metrics": null
+  },
+  "naos": {
+    "name": "Naos",
+    "homepage": "https://naos-ui.dev",
+    "repository": "https://github.com/sebastian-software/naos-ui",
+    "status": "open-source",
+    "license": "Apache-2.0",
+    "metrics": "naos-ui"
+  }
+}
