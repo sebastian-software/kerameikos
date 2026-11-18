@@ -10,7 +10,7 @@ what they need from here.
 The Kerameikos was the potters' quarter of ancient Athens, where the painted vases were made
 whose style these marks follow.
 
-- **Overview with downloads:** https://sebastian-software.github.io/kerameikos/, published from
+- **Overview with downloads:** https://kerameikos.design/, published from
   `main` by `.github/workflows/pages.yml`.
 - **Style guide:** [`DESIGN.md`](DESIGN.md): lockups, typography, colors, layout, and voice.
 - **Brand package per product:** a zip with every file of the product (marks, lockups, favicon,

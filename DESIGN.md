@@ -129,7 +129,7 @@ history.
 | `png/`               | The full mark and the lockups as PNG, for tools that do not take SVG               |
 
 Every product has a brand package on the
-[overview page](https://sebastian-software.github.io/kerameikos/): a zip with all of these
+[overview page](https://kerameikos.design/): a zip with all of these
 files, the typeface, and a short guide with the HTML for a site's head.
 
 **Icons** use the small mark at every file size, because they are seen at icon size: the
