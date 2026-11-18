@@ -19,6 +19,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "_site"
 REPO = "https://github.com/sebastian-software/kerameikos"
+SITE = "https://kerameikos.design/"
+SITE_DESCRIPTION = "Marks, small versions, lockups, palette, and typeface of the products with ancient-Greek names."
 YEAR = __import__("datetime").date.today().year
 
 readme = (ROOT / "README.md").read_text()
@@ -163,7 +165,7 @@ def package(name, slug):
             z.write(ROOT / font, f"{slug}/fonts/{font}")
         z.write(ROOT / "OFL.txt", f"{slug}/fonts/OFL.txt")
         guide = PACKAGE_README.format(
-            name=name, rule="=" * (len(name) + 14), site=f"https://sebastian-software.github.io/kerameikos/#{slug}", repo=REPO
+            name=name, rule="=" * (len(name) + 14), site=f"{SITE}#{slug}", repo=REPO
         )
         z.writestr(f"{slug}/README.txt", guide)
 
@@ -247,7 +249,12 @@ page = f"""<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kerameikos</title>
-<meta name="description" content="Marks, small versions, lockups, palette, and typeface of the products with ancient-Greek names.">
+<meta name="description" content="{SITE_DESCRIPTION}">
+<link rel="canonical" href="{SITE}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kerameikos">
+<meta property="og:description" content="{SITE_DESCRIPTION}">
+<meta property="og:url" content="{SITE}">
 <link rel="icon" href="marks/palamedes/mark-small.svg">
 <link rel="stylesheet" href="theme/theme.css">
 <style>
