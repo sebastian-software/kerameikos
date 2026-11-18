@@ -44,6 +44,7 @@ licensed for use outside its products. The typeface Cinzel Hellenic is free soft
 | [`tools/preview-marks.mjs`](tools/preview-marks.mjs)                                                 | Shows marks side by side, to judge a new one                                            |
 | [`tools/build-lockups.py`](tools/build-lockups.py)                                                   | Builds the lockups from the marks and the font                                          |
 | [`products.json`](products.json)                                                                     | Each product's homepage, repository, open source or commercial, and its oss-metrics key |
+| [`brands/`](brands)                                                                                  | The Sebastian Software and Sebastian Consulting logos for the page's foot               |
 | [`theme/`](theme)                                                                                    | `theme.css`, `ardo.js`, `tokens.json`, generated from `DESIGN.md`                       |
 | [`tools/build-theme.py`](tools/build-theme.py)                                                       | Writes `theme/` from the tokens in `DESIGN.md`; `--check` runs in CI                    |
 | [`tools/build-icons.mjs`](tools/build-icons.mjs)                                                     | Renders `icons/` and `png/` of every mark                                               |
