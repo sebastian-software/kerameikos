@@ -19,6 +19,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "_site"
 REPO = "https://github.com/sebastian-software/kerameikos"
+YEAR = __import__("datetime").date.today().year
 
 readme = (ROOT / "README.md").read_text()
 members = re.findall(
@@ -317,17 +318,29 @@ p code {{ font: 0.9em var(--kr-mono); }}
 .usage dt {{ font: 0.75rem/1.9 var(--kr-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--kr-accent); }}
 .usage dd {{ margin: 0; color: var(--kr-ink-2); }}
 @media (max-width: 40rem) {{ .usage {{ grid-template-columns: 1fr; gap: 0.2rem; }} .usage dd {{ margin-bottom: 0.75rem; }} }}
+.eyebrow a {{ color: inherit; text-decoration: none; }}
+.eyebrow a:hover {{ color: var(--kr-accent); }}
+.workshop {{ list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem; max-width: 52rem; }}
+.workshop a {{ display: block; height: 100%; background: #fff; padding: 1.4rem 1.5rem; border: 1px solid var(--kr-hair);
+  color: #3f5471; text-decoration: none; font-size: 0.9375rem; line-height: 1.5; }}
+.workshop a:hover {{ color: #0e2a4d; }}
+.workshop img {{ display: block; height: 2.8rem; width: auto; max-width: 100%; margin-bottom: 0.75rem; }}
 footer {{ padding: 2rem 0 3rem; color: var(--kr-ink-3); font-size: 0.875rem; }}
+footer .wrap {{ display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; align-items: baseline; }}
+footer .copy {{ margin-left: auto; }}
+@media (max-width: 40rem) {{ .workshop {{ grid-template-columns: 1fr; }} footer .copy {{ margin-left: 0; }} }}
 @media (max-width: 64rem) {{ .grid {{ grid-template-columns: repeat(3, 1fr); }} }}
 @media (max-width: 40rem) {{ .grid {{ grid-template-columns: repeat(2, 1fr); }} .grid.lockups {{ grid-template-columns: 1fr; }} .tile.wide img {{ height: 2.75rem; }} .product header {{ align-items: flex-start; }} .product .lead {{ width: 4rem; height: 4rem; }} }}
 </style>
 </head>
 <body>
 <div class="top"><div class="wrap">
-  <div class="eyebrow">Sebastian Software · Brand assets</div>
+  <div class="eyebrow"><a href="https://sebastian-software.com">Sebastian Software</a> · Brand assets</div>
   <h1>Kerameikos</h1>
   <p class="lede">The brand assets of our products with ancient-Greek names: marks, small versions,
-  lockups, icons, palette, typeface, and theme, and a brand package per product. The Kerameikos was the potters' quarter of Athens, where the
+  lockups, icons, palette, typeface, and theme, and a brand package per product. We make these
+  products at <a href="https://sebastian-software.com">Sebastian Software</a> in Mainz. The Kerameikos was the potters' quarter of Athens, where the
   painted vases were made whose style the marks follow. Click any file to download it. The rules are in the
   <a href="{REPO}/blob/main/DESIGN.md">style guide</a> and the
   <a href="{REPO}/blob/main/README.md">frame rule</a>.</p>
@@ -398,7 +411,22 @@ import {{ KERAMEIKOS_ARDO_THEME }} from "kerameikos/ardo"</pre>
   </div>
 </div></div>
 
-<footer><div class="wrap">Generated from <a href="{REPO}">sebastian-software/kerameikos</a>.</div></footer>
+<div class="band parchment"><div class="wrap">
+  <h3>The workshop</h3>
+  <ul class="workshop">
+    <li><a href="https://sebastian-software.com"><img src="brands/sebastian-software.svg" alt="Sebastian Software">
+      <span>The product company behind this family, in Mainz: software we build and use ourselves.</span></a></li>
+    <li><a href="https://sebastian-consulting.com"><img src="brands/sebastian-consulting.svg" alt="Sebastian Consulting">
+      <span>The people behind the products, for hire: architecture, integration, and long-term maintenance.</span></a></li>
+  </ul>
+</div></div>
+
+<footer><div class="wrap">
+  <span>Kerameikos, generated from <a href="{REPO}">sebastian-software/kerameikos</a></span>
+  <a href="https://sebastian-software.com/imprint">Imprint</a>
+  <a href="https://sebastian-software.com/privacy-policy">Privacy</a>
+  <span class="copy">© {YEAR} Sebastian Software GmbH</span>
+</div></footer>
 <script>
 // Live numbers for the open-source products, from oss-metrics. Without them the page loses nothing.
 (async () => {{
@@ -449,6 +477,7 @@ for name in ("CinzelHellenic-Regular.woff2", "CinzelHellenic-Regular.ttf", "OFL.
     shutil.copy2(ROOT / name, OUT / name)
 shutil.copytree(ROOT / "frame", OUT / "frame", ignore=shutil.ignore_patterns("*.png"))
 shutil.copytree(ROOT / "theme", OUT / "theme")
+shutil.copytree(ROOT / "brands", OUT / "brands", ignore=shutil.ignore_patterns("*.md"))
 for name, slug, _, _ in members:
     dst = OUT / "marks" / slug
     dst.mkdir(parents=True)
